@@ -1,9 +1,9 @@
 {
-  "name": "application-name",
+  "name": "byvblog",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "continuation app"
   },
   "dependencies": {
     "express": "3.0.0rc4",
