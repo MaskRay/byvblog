@@ -1,0 +1,7 @@
+mixin post(post)
+  .post
+    h1
+      a(href='/' + post.id)= post.title
+    p #{post.author}
+    p #{post.postTime}
+    p #{post.contents}

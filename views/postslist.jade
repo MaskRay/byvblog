@@ -2,7 +2,8 @@ extends layout
 include includes/post
 
 block title
-  title= post.title + ' - BYVoid'
+  title= '首䈎'
 
 block content
-  mixin post(post)
+  each post in posts
+    mixin post(post)
