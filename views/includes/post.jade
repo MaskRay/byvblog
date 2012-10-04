@@ -1,7 +1,8 @@
 mixin post(post)
-  .post
-    h1
-      a(href='/' + post.id)= post.title
-    p #{post.author}
-    p #{post.postTime}
-    p #{post.contents}
+  article.post(data-post-id=post.id)
+    header
+      h1
+        a(href='/' + post.id, class='post_header_link')= post.title
+    author #{post.author}
+    time #{post.postTime}
+    .content= post.contents

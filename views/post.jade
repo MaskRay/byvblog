@@ -6,3 +6,7 @@ block title
 
 block content
   mixin post(post)
+
+block scripts
+  script
+    history.replaceState('#{post.id}');

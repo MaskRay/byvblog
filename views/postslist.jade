@@ -7,3 +7,7 @@ block title
 block content
   each post in posts
     mixin post(post)
+
+block scripts
+  script
+    history.replaceState('postlist');

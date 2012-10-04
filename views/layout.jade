@@ -4,11 +4,12 @@ html
     block title
     link(rel='stylesheet', href='/css/style.css')
   body
-    block content
-    //script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js')
-    //script(src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.1/underscore-min.js')
-    //script(src='//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js')
+    #contents
+      block content
     script(src='/js/jquery-1.8.2.js')
-    script(src='/js/underscore.js')
-    script(src='/js/backbone.js')
+    script(src='/js/jade.js')
+    script(src='/js/' + assetsJit('continuation', 'model.coffee', 'model.js'))
+    script(src='/js/' + assetsJit('continuation', 'view.coffee', 'view.js'))
+    script(src='/js/' + assetsJit('continuation', 'post.coffee', 'post.js'))
     script(src='/js/' + assetsJit('continuation', 'blog.coffee', 'blog.js'))
+    block scripts
