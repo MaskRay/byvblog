@@ -1,0 +1,9 @@
+extends layout
+
+block title title= post.title + ' - BYVoid'
+
+block content
+  h1= title
+  p #{post.author}
+  p #{post.postTime}
+  p #{post.contents}
