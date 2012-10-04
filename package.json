@@ -9,6 +9,7 @@
     "express": "3.0*",
     "jade": "0.27*",
 	"mongoose": "3.2*",
-	"connect-mongo": "0.2*"
+	"connect-mongo": "0.2*",
+	"mkdirp": "0.3*"
   }
 }
