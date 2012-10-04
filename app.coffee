@@ -1,7 +1,9 @@
+"use continuation"
 http = require('http')
 path = require('path')
 express = require('express')
 routes = require('./routes')
+jit = require('./jit')
 
 app = express()
 
@@ -22,6 +24,12 @@ app.configure 'development', ->
 routes app
 
 port = app.get('port')
+
+jit
+  continuation:
+    src: path.join __dirname, 'assets', 'js'
+    dest: path.join __dirname, 'public', 'js'
+, obtain()
 
 http.createServer(app).listen port, cont()
 console.log "Express server listening on port " + port
