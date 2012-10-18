@@ -14,6 +14,10 @@ module.exports = (app) ->
     if post is null
       return next()
     res.json post
+    
+  app.get '/api/postlist', (req, res, next) ->
+    Post.find().limit(10).sort('-postTime').exec obtain posts
+    res.json posts
   
   app.get /^\/api\/template\/(.+)$/ , (req, res, next) ->
     templateName = app.get('views') + '/' + req.params[0]

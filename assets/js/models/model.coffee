@@ -6,19 +6,13 @@ Model.attrs = []
 
 Model.fetch = (id, next) ->
   self = this
-  
-  request = $.ajax({
-    type: 'GET'
-    url: self.url + '/' + id
-  })
-  
-  request.done (result) ->
-    post = new self result.id;
+  try
+    Utils.get self.url + '/' + id, obtain(result)
+    post = new self result.id
     for attr in self.attrs
       post[attr] = result[attr]
     next null, post
-  
-  request.fail (jqXHR) ->
-    next jqXHR
+  catch err
+    next err
 
 window.Model = Model

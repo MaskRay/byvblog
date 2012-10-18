@@ -3,7 +3,7 @@ class Controller
 
 Controller.initialize = ->
   Controller.routes =
-    'postlist':   ['']
+    'postlist':   ['/', Controller.postList]
     '*':          ['*', Controller.loadPost]
 
 Controller.getStateInfo = (state) ->

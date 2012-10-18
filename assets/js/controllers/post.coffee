@@ -1,16 +1,14 @@
+'use strict'
 postCache = {}
 
 Controller.loadPost = (postId, next) ->
-  if postCache[postId]?
-    next null, postCache[postId] if next?
-    return
-  
   try
-    Post.fetch postId, obtain post
+    if postCache[postId]?
+      post = postCache[postId]
+    else
+      Post.fetch postId, obtain post
+      postCache[postId] = post
     View.post.show post, obtain()
+    next null, post if next?
   catch err
-    return next err if next?
-    console.error err
-
-  postCache[postId] = post
-  next null, post if next?
+    next err if next?
