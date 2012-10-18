@@ -37,10 +37,3 @@ View::render = (locals) ->
   @template locals
 
 window.View = View
-
-View.post = post = new View '/api/template/', 'includes/post.jade'
-post.render = (post1) ->
-  self = post
-  if not self.template?
-    self.compile 'mixin post(post)'
-  res = self.template post: post1
