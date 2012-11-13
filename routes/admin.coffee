@@ -27,11 +27,16 @@ module.exports = (app) ->
     res.redirect '/admin'
   
   app.get '/admin/new', (req, res, next) ->
+    if not req.session.user?
+      return res.redirect '/admin/login'
     res.render 'admin/editpost',
       post: null
     
   app.post '/admin/new', (req, res, next) ->
-    Post.newPost req.body.post, cont(err, post)
+    if not req.session.user?
+      return res.redirect '/admin/login'
+    author = req.session.user.name
+    Post.newPost req.body.post, author, cont(err, post)
     if err
       req.session.error = err.toString()
       return res.redirect '/admin/new'
@@ -45,10 +50,14 @@ module.exports = (app) ->
     next()
     
   app.get '/admin/edit/:postId', (req, res, next) ->
+    if not req.session.user?
+      return res.redirect '/admin/login'
     res.render 'admin/editpost',
       post: req.post
   
   app.post '/admin/edit/:postId', (req, res, next) ->
+    if not req.session.user?
+      return res.redirect '/admin/login'
     req.post.modify req.body.post, cont(err, post)
     res.redirect '/admin/edit/' + post.id
     

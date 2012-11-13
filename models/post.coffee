@@ -32,8 +32,9 @@ parseTags = (tags) ->
     tags[i] = tags[i].trim()
   tags
 
-Post.newPost = (rawPost, next) ->
+Post.newPost = (rawPost, author, next) ->
   post = new Post
+  post.author = author
   post.modify rawPost, next
 
 Post::modify = (rawPost, next) ->
