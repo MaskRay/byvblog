@@ -1,0 +1,13 @@
+extends ../layout
+
+block title
+  title= 'Login'
+
+block content
+  form(method='post')
+    input(name='user[name]', placeholder='Username')
+    input(type='password', name='user[password]', placeholder='Password')
+    input(type='submit', value='Login')
+
+block scripts
+  script

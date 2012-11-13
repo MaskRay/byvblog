@@ -1,12 +1,15 @@
 'use continuation'
 fs = require 'fs'
 Post = require '../models/post'
+admin = require './admin'
 
 module.exports = (app) ->
   app.get '/', (req, res, next) ->
     Post.find().limit(10).sort('-postTime').exec obtain posts
     res.render 'postslist',
       posts: posts
+      
+  admin app
 
   app.get '/api/post/:postId', (req, res, next) ->
     postId = req.params.postId

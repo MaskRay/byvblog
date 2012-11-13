@@ -19,13 +19,22 @@ app.configure ->
   app.set 'views', __dirname + '/views'
   app.set 'view engine', 'jade'
   app.use express.cookieParser()
+  MongoStore = connect_mongo(express)
   app.use express.session
     secret: config.cookie_secret,
-    store: new connect_mongo(express) config.mongo
+    store: new MongoStore(config.mongo)
   app.use express.favicon()
   app.use express.logger('dev')
   app.use express.bodyParser()
   app.use express.methodOverride()
+  
+  app.use (req, res, next) ->
+    res.locals.errors = ->
+      error = req.session.error
+      req.session.error = undefined
+      error
+    next()
+  
   app.use app.router
   app.use express.static(path.join __dirname, 'public')
 
