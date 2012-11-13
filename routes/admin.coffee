@@ -3,14 +3,16 @@ User = require '../models/user'
 Post = require '../models/post'
 
 module.exports = (app) ->
-  app.get '/admin', (req, res, next) ->
+  app.get '/admin/', (req, res, next) ->
     if not req.session.user?
       return res.redirect '/admin/login'
-    res.json req.session.user
+    Post.find().sort('-postTime').exec obtain posts
+    res.render 'admin/postslist',
+      posts: posts
   
   app.get '/admin/login', (req, res, next) ->
     if req.session.user?
-      return res.redirect '/admin'
+      return res.redirect '/admin/'
     res.render 'admin/login'
   
   app.post '/admin/login', (req, res, next) ->
@@ -20,11 +22,11 @@ module.exports = (app) ->
       res.render 'admin/login'
     else
       req.session.user = user
-      res.redirect '/admin/new'
+      res.redirect '/admin/'
   
   app.get '/admin/logout', (req, res, next) ->
     req.session.user = undefined
-    res.redirect '/admin'
+    res.redirect '/admin/'
   
   app.get '/admin/new', (req, res, next) ->
     if not req.session.user?
@@ -60,4 +62,3 @@ module.exports = (app) ->
       return res.redirect '/admin/login'
     req.post.modify req.body.post, cont(err, post)
     res.redirect '/admin/edit/' + post.id
-    
