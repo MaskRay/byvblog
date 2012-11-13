@@ -1,0 +1,15 @@
+extends ../layout
+
+block title
+  title= 'Edit Post'
+
+block content
+  form(method='post')
+    input(name='post[id]', placeholder='Id', value=post?post.id:'')
+    input(name='post[title]', placeholder='Title', value=post?post.title:'')
+    textarea(name='post[contents]', placeholder='Contents')=post?post.contents:''
+    input(name='post[tags]', placeholder='Tags', value=post?post.tags:'')
+    input(type='submit', value='Save')
+
+block scripts
+  script
