@@ -1353,26 +1353,69 @@ ul.pricing-box-list-box li:hover {
 
 }
 .hentry ul,
-.simple-list-2 li a {   color: #898989 }
-.simple-list-2 li a:hover { color: #9dcedf;text-decoration: underline;}
-ul.center-list {   text-align: center }
-ul.center-list li { text-align: center;display: inline;}
-ul.center-list li a {text-align: center; padding: 5px 5px;}
-ul.center-list li a:hover {   text-decoration: underline }
-ul.dotted-list li {   border-bottom: 1px dotted #bdbdbd }
-ul.dotted-list li {   padding: 0px 0 5px 20px }
-.arrow li,.arrow-2 li,.circle li,.check li,.check-2 li,.star li,.plus li,.dash li {list-style: none; margin: 0;}
-ul.dotted-list li { padding: 5px 0 5px 20px;border-bottom: 1px dotted #bdbdbd;}
-li.simple-check-list {   background: url(../images/list-check-2.png) no-repeat 0 7px }
-li.simple-plus-list {   background: url(../images/list-plus.png) no-repeat 0 9px }
-li.simple-star-list {   background: url(../images/list-star.png) no-repeat 0 6px }
-li.simple-dott-list {   background: url(../images/list-circle.png) no-repeat 0 10px }
-li.simple-dash-list {   background: url(../images/list-dash.png) no-repeat 0 10px }
-li.simple-check-list-2 {   background: url(../images/list-check.png) no-repeat 0 10px }
-li.simple-arrow-list {   background: url(../images/list-arrow.png) no-repeat 0 11px }
-li.simple-heart-list {   background: url(../images/list-heart.png) no-repeat 0 7px }
-li.simple-info-list {   background: url(../images/list-info.png) no-repeat 0 7px }
-li.simple-settings-list {   background: url(../images/list-settings.png) no-repeat 0 7px }
+.simple-list-2 li a {
+}
+.simple-list-2 li a:hover {
+  color: #9dcedf;
+  text-decoration: underline;
+}
+ul.center-list {
+  text-align: center
+}
+ul.center-list li {
+  text-align: center;
+  display: inline;
+}
+ul.center-list li a {
+  text-align: center;
+  padding: 5px 5px;
+}
+ul.center-list li a:hover {
+  text-decoration: underline
+}
+ul.dotted-list li {
+  border-bottom: 1px dotted #bdbdbd
+}
+ul.dotted-list li {
+  padding: 0px 0 5px 20px
+}
+.arrow li,.arrow-2 li,.circle li,.check li,.check-2 li,.star li,.plus li,.dash li {
+  list-style: none;
+  margin: 0;
+}
+ul.dotted-list li {
+  padding: 5px 0 5px 20px;
+  border-bottom: 1px dotted #bdbdbd;
+}
+li.simple-check-list {
+  background: url(../images/list-check-2.png) no-repeat 0 7px
+}
+li.simple-plus-list {
+  background: url(../images/list-plus.png) no-repeat 0 9px
+}
+li.simple-star-list {
+  background: url(../images/list-star.png) no-repeat 0 6px
+}
+li.simple-dott-list {
+  background: url(../images/list-circle.png) no-repeat 0 10px
+}
+li.simple-dash-list {
+  background: url(../images/list-dash.png) no-repeat 0 10px
+}
+li.simple-check-list-2 {
+  background: url(../images/list-check.png) no-repeat 0 10px
+}
+li.simple-arrow-list {
+  background: url(../images/list-arrow.png) no-repeat 0 11px
+}
+li.simple-heart-list {
+  background: url(../images/list-heart.png) no-repeat 0 7px
+}
+li.simple-info-list {
+  background: url(../images/list-info.png) no-repeat 0 7px
+}
+li.simple-settings-list {
+  background: url(../images/list-settings.png) no-repeat 0 7px }
 
 
 /* ---------------------------------------------------------------------- */
@@ -2221,8 +2264,12 @@ blockquote {
    float: right;
    margin-top: 5px;
 }
-pre,
+
 code {
+  background-color: #f5f5f5;
+}
+
+pre {
    border: 1px solid #e1e1e1;
    border-left: 5px solid #e1e1e1;
    width: 96%;

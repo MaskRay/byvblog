@@ -1,6 +1,6 @@
 'use continuation'
 mongoose = require '../lib/mongoose'
-markdown = require 'markdown'
+marked = require 'marked'
 
 postSchema = new mongoose.Schema
   id:
@@ -67,4 +67,4 @@ Post::modify = (rawPost, next) ->
 
 Post::render = ->
   if @contentsFormat is 'markdown'
-    @contents = markdown.markdown.toHTML @contents
+    @contents = marked @contents
