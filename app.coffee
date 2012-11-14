@@ -5,12 +5,6 @@ express = require 'express'
 connect_mongo = require 'connect-mongo'
 config = require './config'
 routes = require './routes'
-jit = require './jit'
-
-jit.configure
-  continuation:
-    src: path.join __dirname, 'assets', 'js'
-    dest: path.join __dirname, 'public', 'js'
 
 app = express()
 
@@ -46,14 +40,7 @@ app.configure ->
 app.configure 'development', ->
   app.use express.errorHandler()
 
-#TODO disable jit in production env
-app.locals.assetsJit = (type, src, dest) ->
-  jit.update type, src, dest
-  return dest
-
 routes app
-
-jit obtain()
 
 port = app.get 'port'
 http.createServer(app).listen port, cont()
