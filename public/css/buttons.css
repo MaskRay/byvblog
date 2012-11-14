@@ -7,15 +7,14 @@
     display: inline-block;
     font-size: 11px;
     font-weight: bold;
-    height: 19px;
+    height: 30px;
     margin: 5px 10px 5px 0;
-    padding: 9px 13px 0;
+    padding: 4px 13px 0;
     text-decoration: none !important;
-    text-transform:uppercase;
     color:#555 !important;
     border:1px solid #000;
     line-height:11px;
-    background-image: url(../images/buttons/s5_buttons/light_grey.png);
+    background-image: url(../images/buttons/light_grey.png);
     border:1px solid #23282F;
     text-shadow:none !important;
 }
@@ -80,91 +79,91 @@
 /* New S5 buttons styles */
 
 .blue{
-    background-image: url(../images/buttons/s5_buttons/blue.png) !important;
+    background-image: url(../images/buttons/blue.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #003960 !important;
 }
 
 .steel_blue{
-    background-image: url(../images/buttons/s5_buttons/steel_blue.png) !important;
+    background-image: url(../images/buttons/steel_blue.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #2F709B !important;
 }
 
 .sea_blue{
-    background-image: url(../images/buttons/s5_buttons/sea_blue.png) !important;
+    background-image: url(../images/buttons/sea_blue.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #015994 !important;
 }
 
 .green{
-    background-image: url(../images/buttons/s5_buttons/green.png) !important;
+    background-image: url(../images/buttons/green.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #008800 !important;
 }
 
 .fresh_green{
-    background-image: url(../images/buttons/s5_buttons/fresh_green.png) !important;
+    background-image: url(../images/buttons/fresh_green.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #71711A !important;
 }
 
 .earth_green{
-    background-image: url(../images/buttons/s5_buttons/earth_green.png) !important;
+    background-image: url(../images/buttons/earth_green.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #1A4A48 !important;
 }
 
 .red{
-    background-image: url(../images/buttons/s5_buttons/red.png) !important;
+    background-image: url(../images/buttons/red.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #930000 !important;
 }
 
 .light_red{
-    background-image: url(../images/buttons/s5_buttons/light_red.png) !important;
+    background-image: url(../images/buttons/light_red.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #B61818 !important;
 }
 
 .orange{
-    background-image: url(../images/buttons/s5_buttons/orange.png) !important;
+    background-image: url(../images/buttons/orange.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #A32E01 !important;
 }
 
 .purple{
-    background-image: url(../images/buttons/s5_buttons/purple.png) !important;
+    background-image: url(../images/buttons/purple.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #A20D75 !important;
 }
 
 .lavander{
-    background-image: url(../images/buttons/s5_buttons/lavander.png) !important;
+    background-image: url(../images/buttons/lavander.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #8D7799 !important;
 }
 
 .grey{
-    background-image: url(../images/buttons/s5_buttons/grey.png) !important;
+    background-image: url(../images/buttons/grey.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #909090 !important;
 }
 
 .light_grey{
-    background-image: url(../images/buttons/s5_buttons/light_grey.png) !important;
+    background-image: url(../images/buttons/light_grey.png) !important;
     color:#555 !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #BBB !important;
@@ -172,14 +171,14 @@
 }
 
 .dark_grey{
-    background-image: url(../images/buttons/s5_buttons/dark_grey.png) !important;
+    background-image: url(../images/buttons/dark_grey.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #2F2F2F !important;
 }
 
 .black{
-    background-image: url(../images/buttons/s5_buttons/black.png) !important;
+    background-image: url(../images/buttons/black.png) !important;
     color:#fff !important;
     text-shadow:0 -1px 0 #888 !important;
     border:1px solid #000000 !important;

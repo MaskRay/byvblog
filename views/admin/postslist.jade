@@ -10,6 +10,7 @@ block content
       th= 'Title'
       th= 'Time'
       th= 'Private'
+      th= 'List'
       th= 'Clicks'
       th= 'Tags'
     each post in posts
@@ -20,5 +21,6 @@ block content
           a(href='/' + post.id)= post.title
         td= dateFormat(post.postTime, 'yyyy-mm-dd HH:MM:ss')
         td= post.private
+        td= post.list
         td= post.clicks
         td= post.tags

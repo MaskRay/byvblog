@@ -58,8 +58,14 @@ module.exports = (app) ->
     if not req.session.user?
       return res.redirect '/admin/login'
     postId = req.params[0]
-    Post.findOne {id: postId}, cont(err, post)
-    return next err if err
-    return next new Error('Invalid post id') if not post?
-    post.modify req.body.post, cont(err, post)
-    res.redirect '/admin/edit/' + post.id
+    try
+      Post.findOne {id: postId}, obtain(post)
+      throw new Error('Invalid post id') if not post?
+      post.modify req.body.post, obtain(savedPost)
+      req.session.success = 'Post saved'
+      res.redirect '/admin/edit/' + savedPost.id
+    catch err
+      req.session.error = err.toString()
+      res.render 'admin/editpost',
+        post: post
+      

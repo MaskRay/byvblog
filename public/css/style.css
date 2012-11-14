@@ -2325,3 +2325,49 @@ ul.buttons-huge li {
   background: #FAFAFA;
 }
 
+input[type=submit] {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 80px;
+}
+
+input[readonly] {
+  background: #DDD;
+}
+
+textarea,
+input {
+  line-height: 20px;
+  border: 1px solid #AAA;
+  padding: 4px;
+  margin: 0;
+  width: 280px;
+}
+
+textarea {
+  width: 700px;
+  height: 200px;
+}
+
+label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  line-height: 30px;
+}
+
+.control-group {
+  margin: 0 0 14px 0;
+}
+
+.controls {
+  padding-left: 120px;
+}
+
+.controls p {
+  margin: 4px 0 0 0;
+  color: #888;
+}

@@ -30,6 +30,10 @@ app.configure ->
   
   app.use (req, res, next) ->
     res.locals.dateFormat = require('dateformat');
+    res.locals.success = ->
+      success = req.session.success
+      req.session.success = undefined
+      success
     res.locals.errors = ->
       error = req.session.error
       req.session.error = undefined

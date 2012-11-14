@@ -10,9 +10,18 @@ postSchema = new mongoose.Schema
   author: String
   contents: String
   postTime: Date
-  clicks: Number
+  clicks:
+    type: Number
+    index: true
   tags: [String]
-  private: Boolean
+  private:
+    type: Boolean
+    index: true
+  list:
+    type: Boolean
+    index: true
+  contentsFormat: String
+  
 
 module.exports = Post = mongoose.model 'Post', postSchema
 
@@ -22,7 +31,9 @@ postSchema.pre 'save', (next) ->
   if not @clicks?
     @clicks = 0
   if not @private?
-    @private = true
+    @private = false
+  if not @list?
+    @list = false
   next()
 
 parseTags = (tags) ->
@@ -42,6 +53,9 @@ Post::modify = (rawPost, next) ->
   @title = rawPost.title
   @contents = rawPost.contents
   @tags = parseTags rawPost.tags
+  @private = rawPost.private
+  @list = rawPost.list
+  @contentsFormat = rawPost.contentsFormat
   if not @id or not @title or not @contents?
     return next new Error('Required fields')
   @save next

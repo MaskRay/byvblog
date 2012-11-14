@@ -5,11 +5,47 @@ block title
 
 block content
   form(method='post')
-    input(name='post[id]', placeholder='Id', value=post?post.id:'')
-    input(name='post[title]', placeholder='Title', value=post?post.title:'')
-    textarea(name='post[contents]', placeholder='Contents')=post?post.contents:''
-    input(name='post[tags]', placeholder='Tags', value=post?post.tags:'')
-    input(type='submit', value='Save')
+    .control-group
+      label(for='postId') ID
+      .controls
+        input#postId(name='post[id]', placeholder='Id', value=post?post.id:'')
+        p 葉面短鏈接
+    .control-group
+      label(for='postTitle') Title
+      .controls
+        input#postTitle(name='post[title]', placeholder='Title', value=post?post.title:'')
+    .control-group
+      label(for='postContents') Contents
+      .controls
+        textarea#postContents(name='post[contents]', placeholder='Contents')=post?post.contents:''
+    .control-group
+      label(for='postTags') Tags
+      .controls
+        input#postTags(name='post[tags]', placeholder='Tags', value=post?post.tags:'')
+        p 用逗號隔開
+    .control-group
+      label(for='postContentsFormat') Format
+      .controls
+        select#postContentsFormat(name='post[contentsFormat]')
+          option(value='markdown') Markdown
+          option(value='html') HTML
+    .control-group
+      label(for='postPrivate') Private
+      .controls
+        - if (post && post.private)
+          input#postPrivate(type='checkbox', name='post[private]', value=1, checked)
+        - else
+          input#postPrivate(type='checkbox', name='post[private]', value=1)
+    .control-group
+      label(for='postList') Show in list
+      .controls
+        - if (post && post.list)
+          input#postList(type='checkbox', name='post[list]', value=1, checked)
+        - else
+          input#postList(type='checkbox', name='post[list]', value=1)
+    .control-group
+      .controls
+        input(type='submit', value='Save').button_link.sea_blue
 
 block scripts
   script
