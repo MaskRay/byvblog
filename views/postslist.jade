@@ -5,8 +5,10 @@ block title
   title= '首䈎'
 
 block content
-  each post in posts
-    mixin post(post)
+  h1= 'Posts'
+  #main.postlist(role="main")
+    each post in posts
+      mixin post(post)
 
 block scripts
   script

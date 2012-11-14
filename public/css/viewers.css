@@ -1,0 +1,39 @@
+/* SITE5 WORDPRESS THEME VIEWERS */
+.viewpdf
+{
+	background:transparent url(../images/icons/small/pdf.png) no-repeat center left;
+	padding:5px 5px 5px 20px;
+}
+
+.viewdoc
+{
+	background:transparent url(../images/icons/small/doc.png) no-repeat center left;
+	padding:5px 5px 5px 20px;
+}
+
+.viewexcel
+{
+	background:transparent url(../images/icons/small/excel.png) no-repeat center left;
+	padding:5px 5px 5px 20px;
+}
+
+.viewppt
+{
+	background:transparent url(../images/icons/small/ppt.png) no-repeat center left;
+	padding:5px 5px 5px 20px;
+}
+
+.sendtwit
+{
+	background:transparent url(../images/icons/small/tweet.png) no-repeat center left;
+	padding:5px 5px 5px 20px;
+}
+
+.gopaypal
+{
+	background:transparent url(../images/icons/paypaldonate.png) no-repeat center left;
+	font-size:12px;
+	fonw-weight:bold;
+	margin:3px;
+	padding:5px 5px 5px 55px;
+}

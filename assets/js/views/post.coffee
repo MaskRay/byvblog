@@ -23,7 +23,7 @@ Post::show = (post, next) ->
   self = this
   try
     self.initialize obtain()
-    $('#contents').html self._render post
+    $('#main').html self._render post
     View.post.setListeners()
   catch err
     return next err
@@ -31,7 +31,7 @@ Post::show = (post, next) ->
 
 Post::setListeners = ->
   $('.post_header_link').each () ->
-    postId = $(this).parent().parent().parent().attr('data-post-id')
+    postId = $(this).attr('data-post-id')
     $(this).click postId, (event) ->
       postId = event.data
       Controller.setState postId

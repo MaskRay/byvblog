@@ -1,8 +1,20 @@
 mixin post(post)
-  article.post(data-post-id=post.id)
-    header
-      h1
-        a(href='/' + post.id, class='post_header_link')= post.title
-    author #{post.author}
-    time #{post.postTime}
-    .content= post.contents
+  article.post.hentry.clearfix(data-post-id=post.id)
+    .entry-meta
+      time.post-date(datetime=post.postTime.toISOString())
+        span.post-month #{post.postTime.getMonth()}
+        strong.post-day #{post.postTime.getDate()}
+        span.post-year #{post.postTime.getFullYear()}
+      ul
+        li
+          span.title Posted By:
+            author #{post.author}
+        li
+          span.title Reads: #{post.clicks}
+        li
+          span.title Tags: #{post.tags}
+    .entry-body
+      header
+        h1
+          a.post_header_link(href='/' + post.id, data-post-id=post.id)= post.title
+      =post.contents

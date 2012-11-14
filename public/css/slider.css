@@ -1,0 +1,74 @@
+/* SITE5 WORDPRESS THEME SLIDER */
+.site5_post_slider_wide
+{
+	margin:0 auto;
+	width:100%;
+}
+
+.site5_post_slider_wide img
+{
+	-khtml-border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border:2px solid #ddd;
+	border-radius:3px;
+	height:300px;
+	padding:3px;
+}
+
+#swpsnav
+{
+	margin-bottom:30px;
+	margin-top:5px;
+	position:relative;
+	z-index:50;
+}
+
+#swpsnav a
+{
+	-khtml-border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	background:#ccc;
+	border:1px solid #ccc;
+	border-radius:3px;
+	margin:10px 2px;
+	padding:3px 5px;
+	text-decoration:none;
+}
+
+#swpsnav a.activeSlide
+{
+	background:#666;
+	color:fff;
+}
+
+#swpsnav a:focus
+{
+	outline:none;
+}
+
+#customquery
+{
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border:0 solid #efefef;
+	border-radius:5px;
+	clear:both;
+	display:block;
+	min-height:200px;
+	overflow:hidden;
+	padding:10px;
+}
+
+#customquery p
+{
+	padding:10px;
+}
+
+#customquery #quote_wrap
+{
+	-box-shadow:1px 1px 5px rgba(0,0,0,0.4);
+	-moz-box-shadow:1px 1px 5px rgba(0,0,0,0.4);
+	min-height:150px;
+}
