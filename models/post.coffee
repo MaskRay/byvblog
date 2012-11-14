@@ -1,5 +1,6 @@
 'use continuation'
 mongoose = require '../lib/mongoose'
+markdown = require 'markdown'
 
 postSchema = new mongoose.Schema
   id:
@@ -48,6 +49,10 @@ Post.newPost = (rawPost, author, next) ->
   post.author = author
   post.modify rawPost, next
 
+Post.render = (posts) ->
+  for post in posts
+    post.render()
+
 Post::modify = (rawPost, next) ->
   @id = rawPost.id
   @title = rawPost.title
@@ -59,3 +64,7 @@ Post::modify = (rawPost, next) ->
   if not @id or not @title or not @contents?
     return next new Error('Required fields')
   @save next
+
+Post::render = ->
+  if @contentsFormat is 'markdown'
+    @contents = markdown.markdown.toHTML @contents

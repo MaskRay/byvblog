@@ -11,6 +11,7 @@
   	"mongoose": "3.2*",
   	"connect-mongo": "0.2*",
   	"mkdirp": "0.3*",
-    "dateformat": "1.0.3-1.2.3"
+    "dateformat": "1.0.3-1.2.3",
+    "markdown": "0.4.0"
   }
 }

@@ -5,9 +5,10 @@ admin = require './admin'
 module.exports = (app) ->
   app.get '/', (req, res, next) ->
     Post.find({private:false, list:true}).limit(10).sort('-postTime').exec obtain posts
+    Post.render posts
     res.render 'postslist',
       posts: posts
-      
+    
   admin app
   
   app.get /^\/(.+)$/, (req, res, next) ->
@@ -20,5 +21,6 @@ module.exports = (app) ->
       #Forbid guest viewing private posts
       return next()
     
+    post.render()
     res.render 'post',
       post: post
