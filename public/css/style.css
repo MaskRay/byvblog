@@ -273,7 +273,7 @@ ul#social-links > li.google-link:hover {
  -moz-box-shadow: 0px 1px 1px #bf3928,inset 0px 2px 5px #ff6957;
  -webkit-box-shadow: 0px 1px 1px #bf3928,inset 0px 2px 5px #ff6957;
 }
-ul#social-links > li.dribbble-link:hover {
+ul#social-links > li.douban-link:hover {
  float: left;
  font-size: 12px;
  width: 32px;
@@ -291,7 +291,7 @@ ul#social-links > li.dribbble-link:hover {
  -moz-box-shadow: 0px 1px 1px #da447c,inset 0px 2px 5px #fc97bb;
  -webkit-box-shadow: 0px 1px 1px #da447c,inset 0px 2px 5px #fc97bb;
 }
-ul#social-links > li.vimeo-link:hover {
+ul#social-links > li.github-link:hover {
  float: left;
  font-size: 12px;
  width: 32px;
@@ -309,7 +309,7 @@ ul#social-links > li.vimeo-link:hover {
  -moz-box-shadow: 0px 1px 1px #0b9ac8,inset 0px 2px 5px #31c6f6;
  -webkit-box-shadow: 0px 1px 1px #0b9ac8,inset 0px 2px 5px #31c6f6;
 }
-ul#social-links > li.skype-link:hover {
+ul#social-links > li.renren-link:hover {
  float: left;
  font-size: 12px;
  width: 32px;
@@ -368,7 +368,7 @@ ul#social-links > li.linkedin-link:hover {
  -moz-box-shadow: 0px 1px 1px #004d90,inset 0px 2px 5px #16a7e8;
  -webkit-box-shadow: 0px 1px 1px #004d90,inset 0px 2px 5px #16a7e8;
 }
-ul#social-links > li.pinterest-link:hover {
+ul#social-links > li.weibo-link:hover {
  float: left;
  font-size: 12px;
  width: 32px;
