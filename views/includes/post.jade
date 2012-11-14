@@ -1,18 +1,19 @@
 mixin post(post)
   article.post.hentry.clearfix(data-post-id=post.id)
-    .entry-meta
-      time.post-date(datetime=post.postTime.toISOString())
-        span.post-month #{dateFormat(post.postTime, 'mmmm')}
-        strong.post-day #{post.postTime.getDate()}
-        span.post-year #{post.postTime.getFullYear()}
-      ul
-        li
-          span.title Posted By:
-            author #{post.author}
-        li
-          span.title Reads: #{post.clicks}
-        li
-          span.title Tags: #{post.tags}
+    - if (post.list)
+      .entry-meta
+        time.post-date(datetime=post.postTime.toISOString())
+          span.post-month #{dateFormat(post.postTime, 'mmmm')}
+          strong.post-day #{post.postTime.getDate()}
+          span.post-year #{post.postTime.getFullYear()}
+        ul
+          li
+            span.title Posted By:
+              author #{post.author}
+          li
+            span.title Reads: #{post.clicks}
+          li
+            span.title Tags: #{post.tags}
     .entry-body
       header
         h1
