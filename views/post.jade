@@ -6,7 +6,15 @@ block title
 
 block content
   mixin post(post)
+  #disqus_thread
 
 block scripts
-  script
-    history.replaceState('#{post.id}');
+  script(type='text/javascript')
+    var disqus_shortname = 'byvoid';
+    var disqus_identifier = '#{post.id}';
+    var disqus_url = location.protocol + '//' + location.host + '/' + disqus_identifier;
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
