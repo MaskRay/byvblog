@@ -2,7 +2,7 @@ mixin post(post)
   article.post.hentry.clearfix(data-post-id=post.id)
     .entry-meta
       time.post-date(datetime=post.postTime.toISOString())
-        span.post-month #{post.postTime.getMonth()}
+        span.post-month #{dateFormat(post.postTime, 'mmmm')}
         strong.post-day #{post.postTime.getDate()}
         span.post-year #{post.postTime.getFullYear()}
       ul

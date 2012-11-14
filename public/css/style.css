@@ -2282,9 +2282,6 @@ ul.buttons-huge li {
    margin-bottom: 30px;
    border-bottom: 1pt solid #e1e1e1;
 }
-
-
-
 .add-widget {
    sssbackground: url("../../lib/shortcodes/images/lists/addlist.png")left center no-repeat;
    background:url("../images/plus.png") left center no-repeat;
@@ -2304,3 +2301,27 @@ ul.buttons-huge li {
 .help p {
    margin-bottom: 0;
 }
+
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border: solid 1px #DDD;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #555;
+}
+
+.table th, td {
+  border: 1px solid #EEE;
+  padding: 4px;
+  text-align: left;
+}
+
+.table tr:hover td {
+  background: #F3F3F3;
+}
+
+.table tr:nth-child(odd) {
+  background: #FAFAFA;
+}
+

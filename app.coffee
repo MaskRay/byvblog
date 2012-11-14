@@ -29,6 +29,7 @@ app.configure ->
   app.use express.methodOverride()
   
   app.use (req, res, next) ->
+    res.locals.dateFormat = require('dateformat');
     res.locals.errors = ->
       error = req.session.error
       req.session.error = undefined

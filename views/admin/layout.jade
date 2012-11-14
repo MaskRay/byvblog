@@ -4,14 +4,27 @@ html
     block title
     link(rel='stylesheet', href='/css/style.css')
   body
-    header
-      h1
-        a(href='/admin/', id='index_link')= '後臺管理'
-    - var errorMsgs = errors()
-    - if (errorMsgs)
-      #errors
-        =errorMsgs
-    #contents
-      block content
-    script(src='/js/jquery-1.8.2.js')
-    block scripts
+    #page
+      #page-top.container.clearfix
+        #pre-header
+        header#header.clearfix(role="banner")
+          hgroup#logo-wrapper
+            h1
+              a#logo(href='/', id='index_link')
+                img(src="/images/logo.png")
+          #navigation-wrapper.clearfix
+            nav#main-navigation.main-menu
+              ul#menu-top-menu.sf-menu
+                li.menu-item
+                  a(href="/admin") Posts
+                li.menu-item
+                  a(href="/admin/new") New Post
+                li.menu-item
+                  a(href="/admin/logout") Log out
+      #content.container.clearfix
+        .container.clearfix
+          - var errorMsgs = errors()
+          - if (errorMsgs)
+            #errors
+              =errorMsgs
+          block content

@@ -3,7 +3,7 @@ User = require '../models/user'
 Post = require '../models/post'
 
 module.exports = (app) ->
-  app.get '/admin/', (req, res, next) ->
+  app.get '/admin', (req, res, next) ->
     if not req.session.user?
       return res.redirect '/admin/login'
     Post.find().sort('-postTime').exec obtain posts
@@ -43,22 +43,23 @@ module.exports = (app) ->
       req.session.error = err.toString()
       return res.redirect '/admin/new'
     res.redirect '/admin/edit/' + post.id
-  
-  app.param 'postId', (req, res, next, postId) ->
+    
+  app.get /^\/admin\/edit\/(.+)$/ , (req, res, next) ->
+    if not req.session.user?
+      return res.redirect '/admin/login'
+    postId = req.params[0]
     Post.findOne {id: postId}, cont(err, post)
     return next err if err
     return next new Error('Invalid post id') if not post?
-    req.post = post
-    next()
-    
-  app.get '/admin/edit/:postId', (req, res, next) ->
-    if not req.session.user?
-      return res.redirect '/admin/login'
     res.render 'admin/editpost',
-      post: req.post
+      post: post
   
-  app.post '/admin/edit/:postId', (req, res, next) ->
+  app.post /^\/admin\/edit\/(.+)$/, (req, res, next) ->
     if not req.session.user?
       return res.redirect '/admin/login'
-    req.post.modify req.body.post, cont(err, post)
+    postId = req.params[0]
+    Post.findOne {id: postId}, cont(err, post)
+    return next err if err
+    return next new Error('Invalid post id') if not post?
+    post.modify req.body.post, cont(err, post)
     res.redirect '/admin/edit/' + post.id
