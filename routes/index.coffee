@@ -21,6 +21,11 @@ module.exports = (app) ->
       #Forbid guest viewing private posts
       return next()
     
+    if not req.session.user?
+      #Inrecrese click count
+      post.clicks += 1
+      post.save obtain()
+    
     post.render()
     res.render 'post',
       post: post

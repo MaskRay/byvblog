@@ -8,21 +8,22 @@ postSchema = new mongoose.Schema
     index: true
     unique: true
   title: String
-  author: String
   contents: String
+  contentsFormat: String
+  author: String
   postTime: Date
   clicks:
     type: Number
     index: true
-  tags: [String]
+  tags: 
+    type: [String]
+    index: true
   private:
     type: Boolean
     index: true
   list:
     type: Boolean
     index: true
-  contentsFormat: String
-  
 
 module.exports = Post = mongoose.model 'Post', postSchema
 
@@ -35,6 +36,8 @@ postSchema.pre 'save', (next) ->
     @private = false
   if not @list?
     @list = false
+  if not @clicks
+    @clicks = 0
   next()
 
 parseTags = (tags) ->
@@ -58,6 +61,7 @@ Post::modify = (rawPost, next) ->
   @title = rawPost.title
   @contents = rawPost.contents
   @tags = parseTags rawPost.tags
+  @clicks = rawPost.clicks
   @private = rawPost.private
   @list = rawPost.list
   @contentsFormat = rawPost.contentsFormat

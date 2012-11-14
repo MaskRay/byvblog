@@ -11,7 +11,7 @@ block content
       label(for='postId') ID
       .controls
         input#postId(name='post[id]', placeholder='Id', value=post?post.id:'')
-        p 葉面短鏈接
+        p Permalink of this post
     .control-group
       label(for='postTitle') Title
       .controls
@@ -24,7 +24,12 @@ block content
       label(for='postTags') Tags
       .controls
         input#postTags(name='post[tags]', placeholder='Tags', value=post?post.tags:'')
-        p 用逗號隔開
+        p Separate with comma
+    .control-group
+      label(for='postClicks') Clicks
+      .controls
+        input#postClicks(name='post[clicks]', placeholder='Clicks', value=post?post.clicks:'0')
+        p Number of views
     .control-group
       label(for='postContentsFormat') Format
       .controls
