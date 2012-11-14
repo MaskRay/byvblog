@@ -4,6 +4,8 @@ block title
   title= 'Edit Post'
 
 block content
+  - if (post)
+    a(href='/' + post.id) View post
   form(method='post')
     .control-group
       label(for='postId') ID
@@ -27,8 +29,14 @@ block content
       label(for='postContentsFormat') Format
       .controls
         select#postContentsFormat(name='post[contentsFormat]')
-          option(value='markdown') Markdown
-          option(value='html') HTML
+          - if (post && post.contentsFormat === 'markdown')
+            option(value='markdown', selected) Markdown
+          - else
+            option(value='markdown') Markdown
+          - if (post && post.contentsFormat === 'html')
+            option(value='html', selected) HTML
+          - else
+            option(value='html') HTML
     .control-group
       label(for='postPrivate') Private
       .controls

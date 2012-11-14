@@ -42,6 +42,7 @@ module.exports = (app) ->
     if err
       req.session.error = err.toString()
       return res.redirect '/admin/new'
+    req.session.success = 'Post saved'
     res.redirect '/admin/edit/' + post.id
     
   app.get /^\/admin\/edit\/(.+)$/ , (req, res, next) ->
