@@ -11,8 +11,21 @@ module.exports = (app) ->
     
   admin app
   
-  app.get /^\/(.+)$/, (req, res, next) ->
-    postId = req.params[0]
+  app.get /^\/(.{2,3})\/(.+)$/, displayPost(true)
+  
+  app.get /^\/(.+)$/, displayPost(false)
+
+displayPost = (languageSpecified) ->
+  (req, res, next) ->
+    if languageSpecified
+      language = req.params[0]
+      postId = req.params[1]
+      if not (language in ['zhs', 'zht', 'en'])
+        return next()
+    else
+      language = null
+      postId = req.params[0]
+    
     Post.findOne {id: postId}, obtain post
     if post is null
       return next()
@@ -26,6 +39,6 @@ module.exports = (app) ->
       post.clicks += 1
       post.save obtain()
     
-    post = post.render()
+    post.render language, obtain(post)
     res.render 'post',
       post: post

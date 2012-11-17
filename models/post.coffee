@@ -1,5 +1,6 @@
 'use continuation'
 mongoose = require '../lib/mongoose'
+translate = require '../lib/translate'
 marked = require 'marked'
 
 contentSchema = new mongoose.Schema
@@ -81,7 +82,14 @@ Post::modify = (rawPost, next) ->
   @save cont(err, post)
   next err, post
 
-Post::render = (language) ->
+Post::getContentsByLanguage = (language) ->
+  for content in @contents
+    if content.language is language
+      return content
+  null
+
+Post::render = (language, next) ->
+  self = this
   post = @toObject()
   rendered = false
   if @contentsFormat is 'markdown'
@@ -93,5 +101,11 @@ Post::render = (language) ->
         break
   if not rendered
     rendered = true
-    #TODO translate
-  return post
+    if language is 'zhs'
+      content = self.getContentsByLanguage 'zht'
+      if content
+        translate.zhtToZhs content.title, obtain(post.title)
+        translate.zhtToZhs content.contents, obtain(post.contents)
+        post.contents = marked content.contents
+    #TODO other direction
+  next null, post
