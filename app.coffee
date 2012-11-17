@@ -1,6 +1,7 @@
 "use continuation"
 http = require 'http'
 path = require 'path'
+util = require 'util'
 express = require 'express'
 connect_mongo = require 'connect-mongo'
 config = require './config'
@@ -24,6 +25,12 @@ app.configure ->
   
   app.use (req, res, next) ->
     res.locals.dateFormat = require('dateformat');
+    res.locals.inspect = util.inspect
+    
+    pathSec = req._parsedUrl.pathname.split '/'
+    pathStart = if pathSec[1] in ['en', 'zhs', 'zht'] then 2 else 1
+    res.locals.postId = '/' + pathSec.slice(pathStart).join '/'
+    
     res.locals.success = ->
       success = req.session.success
       req.session.success = undefined

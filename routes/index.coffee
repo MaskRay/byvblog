@@ -3,17 +3,24 @@ Post = require '../models/post'
 admin = require './admin'
 
 module.exports = (app) ->
-  app.get '/', (req, res, next) ->
+  app.get '/', displayPostList(false)
+  app.get /^\/(.{2,3})\/$/, displayPostList(true)
+  admin app
+  app.get /^\/(.{2,3})\/(.+)$/, displayPost(true)
+  app.get /^\/(.+)$/, displayPost(false)
+
+displayPostList = (languageSpecified) ->
+  (req, res, next) ->
+    if languageSpecified
+      language = req.params[0]
+      if not (language in ['zhs', 'zht', 'en'])
+        return next()
+    else
+      language = null
     Post.find({private:false, list:true}).limit(10).sort('-postTime').exec obtain posts
-    Post.render posts
+    Post.render posts, language, obtain(posts)
     res.render 'postslist',
       posts: posts
-    
-  admin app
-  
-  app.get /^\/(.{2,3})\/(.+)$/, displayPost(true)
-  
-  app.get /^\/(.+)$/, displayPost(false)
 
 displayPost = (languageSpecified) ->
   (req, res, next) ->
@@ -38,7 +45,7 @@ displayPost = (languageSpecified) ->
       #Inrecrese click count
       post.clicks += 1
       post.save obtain()
-    
+
     post.render language, obtain(post)
     res.render 'post',
       post: post

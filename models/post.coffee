@@ -65,9 +65,13 @@ Post.newPost = (rawPost, author, next) ->
   post.author = author
   post.modify rawPost, next
 
-Post.render = (posts) ->
-  for post in posts
-    post.render()
+Post.render = (posts, language, next) ->
+  try
+    for post, i in posts
+      post.render language, obtain(posts[i])
+    next null, posts
+  catch err
+    next err
 
 Post::modify = (rawPost, next) ->
   @id = rawPost.id
@@ -92,20 +96,41 @@ Post::render = (language, next) ->
   self = this
   post = @toObject()
   rendered = false
-  if @contentsFormat is 'markdown'
-    for content, i in @contents
-      if (content.language is language) or (not language and i is 0)
-        post.title = content.title
-        post.contents = marked content.contents
-        rendered = true
-        break
-  if not rendered
+
+  if language
+    content = self.getContentsByLanguage language
+  else
+    content = self.contents[0]
+
+  if content
+    post.title = content.title
+    post.contents = content.contents
     rendered = true
+
+  if not rendered
     if language is 'zhs'
       content = self.getContentsByLanguage 'zht'
       if content
         translate.zhtToZhs content.title, obtain(post.title)
         translate.zhtToZhs content.contents, obtain(post.contents)
         post.contents = marked content.contents
-    #TODO other direction
+        post.converted = 'opencc'
+        rendered = true
+    else if language is 'zht'
+      content = self.getContentsByLanguage 'zhs'
+      if content
+        translate.zhsToZht content.title, obtain(post.title)
+        translate.zhsToZht content.contents, obtain(post.contents)
+        post.contents = marked content.contents
+        post.converted = 'opencc'
+        rendered = true
+  
+  if not rendered
+    post.converted = 'translate'
+    post.title = 'Not implemented'
+    post.contents = 'Not implemented'
+    #TODO google translate API
+
+  if self.contentsFormat is 'markdown'
+    post.contents = marked post.contents
   next null, post

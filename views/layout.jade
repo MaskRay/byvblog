@@ -83,6 +83,17 @@ html
                 input(name='siteurl', type='hidden', value='www.byvoid.com')
                 input#searchsubmit(type='submit', value='Search')
             .sidebarBox
+              h4 Language
+              ul
+                li
+                  a(href=postId) 原文
+                li
+                  a(href='/zht' + postId) 正體中文
+                li
+                  a(href='/zhs' + postId) 簡體中文
+                li
+                  a(href='/en' + postId) English
+            .sidebarBox
               h4 Categories
               ul
                 li
