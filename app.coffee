@@ -28,7 +28,12 @@ app.configure ->
     res.locals.inspect = util.inspect
     
     pathSec = req._parsedUrl.pathname.split '/'
-    pathStart = if pathSec[1] in ['en', 'zhs', 'zht'] then 2 else 1
+    if pathSec[1] in config.languages
+      pathStart = 2
+      res.locals.language = pathSec[1]
+    else
+      pathStart = 1
+      res.locals.language = null
     res.locals.postId = '/' + pathSec.slice(pathStart).join '/'
     
     res.locals.success = ->
