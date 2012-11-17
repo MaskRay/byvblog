@@ -26,6 +26,6 @@ module.exports = (app) ->
       post.clicks += 1
       post.save obtain()
     
-    post.render()
+    post = post.render()
     res.render 'post',
       post: post

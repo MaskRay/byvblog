@@ -13,13 +13,44 @@ block content
         input#postId(name='post[id]', placeholder='Id', value=post?post.id:'')
         p Permalink of this post
     .control-group
-      label(for='postTitle') Title
+      label(for='postLanguage1') Language1
       .controls
-        input#postTitle(name='post[title]', placeholder='Title', value=post?post.title:'')
+        input#postLanguage1(name='post[contents][0][language]', placeholder='Language', value=post&&post.contents[0]?post.contents[0].language:'')
     .control-group
-      label(for='postContents') Contents
+      label(for='postTitle1') Title1
       .controls
-        textarea#postContents(name='post[contents]', placeholder='Contents')=post?post.contents:''
+        input#postTitle1(name='post[contents][0][title]', placeholder='Title', value=post&&post.contents[0]?post.contents[0].title:'')
+    .control-group
+      label(for='postContents') Contents1
+      .controls
+        textarea#postContents(name='post[contents][0][contents]', placeholder='Contents')=post&&post.contents[0]?post.contents[0].contents:''
+
+    .control-group
+      label(for='postLanguage2') Language2
+      .controls
+        input#postLanguage2(name='post[contents][1][language]', placeholder='Language', value=post&&post.contents[1]?post.contents[1].language:'')
+    .control-group
+      label(for='postTitle2') Title2
+      .controls
+        input#postTitle2(name='post[contents][1][title]', placeholder='Title', value=post&&post.contents[1]?post.contents[1].title:'')
+    .control-group
+      label(for='postContents') Contents2
+      .controls
+        textarea#postContents(name='post[contents][1][contents]', placeholder='Contents')=post&&post.contents[1]?post.contents[1].contents:''
+
+    .control-group
+      label(for='postLanguage3') Language3
+      .controls
+        input#postLanguage3(name='post[contents][2][language]', placeholder='Language', value=post&&post.contents[2]?post.contents[2].language:'')
+    .control-group
+      label(for='postTitle3') Title3
+      .controls
+        input#postTitle3(name='post[contents][2][title]', placeholder='Title', value=post&&post.contents[2]?post.contents[2].title:'')
+    .control-group
+      label(for='postContents') Contents3
+      .controls
+        textarea#postContents(name='post[contents][2][contents]', placeholder='Contents')=post&&post.contents[2]?post.contents[2].contents:''
+        
     .control-group
       label(for='postTags') Tags
       .controls

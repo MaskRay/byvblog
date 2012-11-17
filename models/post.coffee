@@ -2,13 +2,17 @@
 mongoose = require '../lib/mongoose'
 marked = require 'marked'
 
+contentSchema = new mongoose.Schema
+  title: String
+  contents: String
+  language: String
+
 postSchema = new mongoose.Schema
   id:
     type: String
     index: true
     unique: true
-  title: String
-  contents: String
+  contents: [contentSchema]
   contentsFormat: String
   author: String
   postTime: Date
@@ -47,6 +51,14 @@ parseTags = (tags) ->
     tags[i] = tags[i].trim()
   tags
 
+parseContents = (contents) ->
+  return [] if not contents
+  filtered = []
+  for content in contents
+    if content.language
+      filtered.push content
+  filtered
+
 Post.newPost = (rawPost, author, next) ->
   post = new Post
   post.author = author
@@ -58,17 +70,28 @@ Post.render = (posts) ->
 
 Post::modify = (rawPost, next) ->
   @id = rawPost.id
-  @title = rawPost.title
-  @contents = rawPost.contents
   @tags = parseTags rawPost.tags
   @clicks = rawPost.clicks
   @private = rawPost.private
   @list = rawPost.list
   @contentsFormat = rawPost.contentsFormat
-  if not @id or not @title or not @contents?
+  @contents = parseContents rawPost.contents
+  if not @id or not @contents
     return next new Error('Required fields')
-  @save next
+  @save cont(err, post)
+  next err, post
 
-Post::render = ->
+Post::render = (language) ->
+  post = @toObject()
+  rendered = false
   if @contentsFormat is 'markdown'
-    @contents = marked @contents
+    for content, i in @contents
+      if (content.language is language) or (not language and i is 0)
+        post.title = content.title
+        post.contents = marked content.contents
+        rendered = true
+        break
+  if not rendered
+    rendered = true
+    #TODO translate
+  return post

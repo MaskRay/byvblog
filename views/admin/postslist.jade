@@ -18,7 +18,7 @@ block content
         td
           a(href='/admin/edit/' + post.id)= post.id
         td
-          a(href='/' + post.id)= post.title
+          a(href='/' + post.id)= post.contents[0].title
         td= dateFormat(post.postTime, 'yyyy-mm-dd HH:MM:ss')
         td= post.private
         td= post.list
