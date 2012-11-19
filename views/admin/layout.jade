@@ -2,18 +2,7 @@ doctype 5
 html
   head
     block title
-    link(rel='stylesheet', href='/css/style.css')
-    link(rel='stylesheet', href='/css/normalize.css')
-    link(rel='stylesheet', href='/css/boxes.css')
-    link(rel='stylesheet', href='/css/lists.css')
-    link(rel='stylesheet', href='/css/slider.css')
-    link(rel='stylesheet', href='/css/viewers.css')
-    link(rel='stylesheet', href='/css/tabs.css')
-    link(rel='stylesheet', href='/css/toggles.css')
-    link(rel='stylesheet', href='/css/buttons.css')
-    link(rel='stylesheet', href='/css/columns.css')
-    link(rel='stylesheet', href='/css/flexslider.css')
-    link(rel='stylesheet', href='/css/custom.css')
+    != css('style')
   body
     #page
       #page-top.container.clearfix
@@ -43,3 +32,5 @@ html
             #errors.cancelbox
               =errorMsgs
           block content
+
+    != js('script')
