@@ -17,5 +17,8 @@ mixin post(post)
     .entry-body
       header
         h1
-          a.post_header_link(href='/' + post.id, data-post-id=post.id)= post.title
+          - if (language)
+            a.post_header_link(href='/' + language + '/' + post.id, data-post-id=post.id)= post.title
+          - else
+            a.post_header_link(href='/' + post.id, data-post-id=post.id)= post.title
       !{post.contents}
