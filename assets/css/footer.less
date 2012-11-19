@@ -1,0 +1,122 @@
+#footer {
+  width: @page-width;
+  padding: 30px 0px 0;
+  margin: 0px;
+  height: auto;
+  background: #222222;
+  h1 {
+    color: #9dcedf;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .widget-container {
+    ul {
+      list-style-type: none;
+      list-style-position: outside;
+      width: 100%;
+    }
+    li {
+      color: #898989;
+      display: block;
+      padding: 5px 0;
+      border-bottom: 1pt solid #333;
+      a {
+        color: #aaa;
+        &:hover {
+          color: #9dcedf;
+          text-decoration: underline;
+        }
+      }
+      &:first-child {
+        border-top: 1pt solid #333;
+      }
+    }
+  }
+}
+
+#copyrights {
+  width: @page-width;
+  padding: 30px 0px;
+  margin-left: 0px;
+  background: #111;
+  float: none;
+  .right {
+    float: right
+  }
+  a {
+    color: #9dcedf;
+    &:hover {
+      text-decoration: underline
+    }
+  }
+}
+
+.backtotop {
+  float: right;
+  text-align: center;
+  background: #2e2e2e;
+  height: 20px;
+  width: 20px;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  webkit-border-radius: 2px;
+  margin-right: -10px;
+  margin-left: 10px;
+  &:hover {
+    background: #222222;
+  }
+}
+
+#footer .tweet {
+  width: auto
+}
+#footer .tweet ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0px;
+}
+#footer .tweet li .tweet_text,
+.block .tweet li .tweet_text {
+  float: left;
+  margin-bottom: 10px;
+}
+#footer .tweet a,
+.block .tweet a {
+  text-transform: none;
+  display: inline;
+  padding: 0px;
+  font-style: italic;
+  font: 12px Arial,Verdana,sans-serif;
+}
+#footer .tweet .tweet_time a,
+.block .tweet .tweet_time a {
+  text-transform: none;
+  display: block;
+  font-style: italic;
+  font-size: 12px;
+  padding: 10px 0 0 25px;
+  color: #9dcedf;
+  background: url("../images/twitter-feed.png") left bottom no-repeat;
+}
+#footer .tweet .tweet_time a:hover,
+.block .tweet .tweet_time a :hover {
+  text-decoration: underline
+}
+
+.widget_site5framework_contact_widget {
+}
+.widget_site5framework_contact_widget span {
+  padding: 5px 0px 5px 30px;
+  width: 100%;
+  display: block;
+  font-style: normal;
+}
+.widget_site5framework_contact_widget span.address {
+  background: url("../images/icons/adress.png") left no-repeat
+}
+.widget_site5framework_contact_widget span.phone {
+  background: url("../images/icons/phone-number.png") left no-repeat
+}
+.widget_site5framework_contact_widget span.email {
+  background: url("../images/icons/mail-adress.png") left no-repeat
+}

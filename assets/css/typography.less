@@ -1,0 +1,111 @@
+@font-face {
+  font-family: 'Dosis';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Dosis Regular'), local('Dosis-Regular'), url("../font/Dosis.woff") format('woff');
+}
+
+body {
+  background: #FFF;
+  color: #898989;
+  font-size: 12px;
+  font-family: @body-font-family;
+  -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+p,ul,ol,pre,code {
+  margin-bottom: 1em;
+}
+
+::-moz-selection {
+  background: #ff4629;
+  color: #fff;
+  text-shadow: none;
+}
+::selection {
+  background: #ff4629;
+  color: #fff;
+  text-shadow: none;
+}
+
+a, a > * {
+  color: #898989;
+  text-decoration: none;
+  -webkit-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+  -moz-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+  -ms-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+  -o-transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+  transition: background-color .2s ease, border .2s ease, color .2s ease, opacity .2s ease-in-out;
+}
+
+a:hover, a > *:hover {
+  color: #9dcedf;
+}
+.colored {
+  color: #9dcedf;
+}
+a.colored:hover {
+  color: #9dcedf;
+  text-decoration: underline;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: normal;
+  font-variant: normal;
+  white-space: normal;
+  color: #898989;
+  margin-bottom: 15px;
+  font-family: @header-font-family;
+  a {
+    color: #303031;
+    font-size: 100%;
+  }
+  a:hover {
+    font-size: 100%;
+    text-decoration: none;
+  }
+}
+h1 {
+  font-size: 34px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 26px;
+  line-height: 34px;
+}
+h3 {
+  font-size: 24px;
+  line-height: 32px;
+}
+h4 {
+  font-size: 18px;
+  line-height: 24px;
+}
+h5 {
+  font-size: 16px;
+  line-height: 20px;
+}
+h6 {
+  font-size: 16px;
+  line-height: 17px;
+}
+
+a h1:hover,a h2:hover,a h3:hover,a h4:hover,a h5:hover,a h6:hover {
+  color: #9dcedf;
+}
+
+.text-align-center {
+  text-align: center;
+}
+.text-align-left {
+  text-align: left;
+}
+.text-align-right {
+  text-align: right;
+}
+.img-align-left {
+  margin: 0px 10px 10px 0;
+  float: left;
+}
