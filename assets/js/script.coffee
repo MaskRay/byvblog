@@ -3,7 +3,6 @@
 #= require styles/modernizr-2.6.1.min
 #= require styles/selectivizr-min
 #= require styles/jquery.prettyPhoto
-#= require styles/buttons
 #= require styles/jquery.quovolver
 #= require styles/jquery.cycle.all.min
 #= require styles/mediaelement-and-player.min

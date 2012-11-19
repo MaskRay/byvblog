@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "continuation app.coffee -e -c"
+    "start": "NODE_ENV=production continuation app.coffee -e -c",
+    "test": "continuation app.coffee -e -c"
   },
   "dependencies": {
     "express": "3.0*",

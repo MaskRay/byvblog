@@ -1,0 +1,79 @@
+.button {
+  cursor: pointer;
+  font-size: 11px;
+  color: @white;
+  text-decoration: none!important;
+  border: none;
+  position: relative;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  &:hover {
+    color: #555;
+  }
+  &:active {
+    text-decoration: none;
+    top: 1px;
+  }
+  &.small {
+    padding: 7px 12px;
+  }
+  &.big {
+    padding: 8px 20px;
+  }
+  &.huge {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: @white !important;
+    font-weight: bold;
+  }
+}
+
+input[type=submit] {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 80px;
+}
+
+input[readonly] {
+  background: #DDD;
+}
+
+textarea,
+input {
+  line-height: 20px;
+  border: 1px solid #AAA;
+  padding: 4px;
+  margin: 0;
+  width: 280px;
+}
+
+textarea {
+  width: 700px;
+  height: 200px;
+}
+
+label {
+  float: left;
+  width: 100px;
+  text-align: right;
+  line-height: 30px;
+}
+
+form {
+  .control-group {
+    margin: 0 0 14px 0;
+  }
+
+  .controls {
+    padding-left: 120px;
+  }
+
+  .controls p {
+    margin: 4px 0 0 0;
+    color: #888;
+  }
+}
