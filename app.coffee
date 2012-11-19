@@ -24,7 +24,6 @@ app.configure ->
   app.use express.methodOverride()
   app.use require('connect-assets')
     src: path.join __dirname, 'assets'
-    build: true
     buildDir: 'public'
   
   app.use (req, res, next) ->
