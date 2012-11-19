@@ -22,6 +22,7 @@ app.configure ->
   app.use express.logger('dev')
   app.use express.bodyParser()
   app.use express.methodOverride()
+  app.use require('connect-assets')(src: path.join(__dirname, 'assets'))
   
   app.use (req, res, next) ->
     res.locals.dateFormat = require('dateformat');

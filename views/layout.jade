@@ -2,19 +2,7 @@ doctype 5
 html
   head
     block title
-    link(rel='stylesheet', href='/css/style.css')
-    link(rel='stylesheet', href='/css/normalize.css')
-    link(rel='stylesheet', href='/css/boxes.css')
-    link(rel='stylesheet', href='/css/lists.css')
-    link(rel='stylesheet', href='/css/slider.css')
-    link(rel='stylesheet', href='/css/viewers.css')
-    link(rel='stylesheet', href='/css/tabs.css')
-    link(rel='stylesheet', href='/css/toggles.css')
-    link(rel='stylesheet', href='/css/buttons.css')
-    link(rel='stylesheet', href='/css/columns.css')
-    link(rel='stylesheet', href='/css/flexslider.css')
-    link(rel='stylesheet', href='/css/highlightjs.css')
-    link(rel='stylesheet', href='/css/custom.css')
+    != css('style')
   body
     #page
       #page-top.container.clearfix
@@ -150,22 +138,5 @@ html
               a.backtotop(href='#') ↑
             ='Originally designed by Site5 WordPress Themes. BYVoid modified.'
 
-    
-    script(type='text/javascript', src='/js/jquery-1.8.2.js')
-    script(type='text/javascript', src='/js/styles/modernizr-2.6.1.min.js')
-    script(type='text/javascript', src='/js/styles/selectivizr-min.js')
-    script(type='text/javascript', src='/js/styles/jquery.prettyPhoto.js')
-    script(type='text/javascript', src='/js/styles/buttons.js')
-    script(type='text/javascript', src='/js/styles/jquery.quovolver.js')
-    script(type='text/javascript', src='/js/styles/jquery.cycle.all.min.js')
-    script(type='text/javascript', src='/js/styles/mediaelement-and-player.min.js')
-    script(type='text/javascript', src='/js/styles/jquery.fitvids.js')
-    script(type='text/javascript', src='/js/styles/jquery.tipsy.js')
-    script(type='text/javascript', src='/js/styles/jquery.flexslider-min.js')
-    script(type='text/javascript', src='/js/styles/jquery.jcarousel.min.js')
-    script(type='text/javascript', src='/js/styles/jquery.easing-1.3.min.js')
-    script(type='text/javascript', src='/js/styles/scripts.js')
-    script(type='text/javascript', src='/js/styles/behaviours.js')
-    script(type='text/javascript', src='/js/highlight.min.js')
-    script(type='text/javascript') hljs.initHighlightingOnLoad();
+    != js('script')
     block scripts
