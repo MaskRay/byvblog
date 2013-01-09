@@ -17,7 +17,7 @@ displayPostList = (req, res, next) ->
   if language? and not (language in config.languages)
     return next()
   
-  Post.find({private:false, list:true}).limit(10).sort('-postTime').exec obtain posts
+  Post.find({private:false, list:true}).limit(config.options.postsPerPage).sort('-postTime').exec obtain posts
   Post.render posts, language, obtain(posts)
   res.render 'postslist',
     posts: posts
@@ -28,24 +28,24 @@ displayFeed = (req, res, next) ->
   if language? and not (language in config.languages)
     return next()
 
-  Post.find({private:false, list:true}).limit(10).sort('-postTime').exec obtain posts
+  Post.find({private:false, list:true}).limit(config.options.feedPosts).sort('-postTime').exec obtain posts
   Post.render posts, language, obtain(posts)
   feed = new RSS({
     title: 'byvblog'
     description: 'desc'
-    feed_url: 'http://www.byvoid.com/feed'
-    site_url: 'http://www.byvoid.com/'
+    feed_url: config.site.url + 'feed'
+    site_url: config.site.url
     image_url: 'http://example.com/icon.png'
-    author: 'BYVoid'
+    author: config.site.author
   })
   
   for post in posts
     feed.item
       title: post.title
       description: post.contents
-      url: 'http://www.byvoid.com/' + post.id
+      url: config.site.url + post.id
       guid: '111'
-      author: 'BYVoid'
+      author: config.site.author
       date: post.postTime
   
   xml = feed.xml()
