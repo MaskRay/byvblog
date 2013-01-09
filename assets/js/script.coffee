@@ -8,4 +8,17 @@
 #= require jquery.quovolver
 #= require behaviours
 
-hljs.initHighlightingOnLoad();
+$ = jQuery
+$ ->
+  hljs.initHighlightingOnLoad()
+  $('.tab_content').hide()
+  $('ul.tabs li:first').addClass('active').show()
+  $('.tab_content:first').show()
+
+$('ul.tabs li').click ->
+  $('ul.tabs li').removeClass('active')
+  $(this).addClass('active')
+  $('.tab_content').hide()
+  activeTab = $(this).find('a').attr('href')
+  $(activeTab).fadeIn()
+  return false

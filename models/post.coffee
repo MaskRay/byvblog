@@ -55,8 +55,9 @@ parseTags = (tags) ->
 parseContents = (contents) ->
   return [] if not contents
   filtered = []
-  for content in contents
-    if content.language
+  for lang, content of contents
+    if content.title
+      content.language = lang
       filtered.push content
   filtered
 

@@ -4,53 +4,12 @@ block title
   title= 'Edit Post'
 
 block content
-  - if (post)
-    a(href='/' + post.id) View post
   form(method='post')
     .control-group
       label(for='postId') ID
       .controls
         input#postId(name='post[id]', placeholder='Id', value=post?post.id:'')
         p Permalink of this post
-    .control-group
-      label(for='postLanguage1') Language1
-      .controls
-        input#postLanguage1(name='post[contents][0][language]', placeholder='Language', value=post&&post.contents[0]?post.contents[0].language:'')
-    .control-group
-      label(for='postTitle1') Title1
-      .controls
-        input#postTitle1(name='post[contents][0][title]', placeholder='Title', value=post&&post.contents[0]?post.contents[0].title:'')
-    .control-group
-      label(for='postContents') Contents1
-      .controls
-        textarea#postContents(name='post[contents][0][contents]', placeholder='Contents')=post&&post.contents[0]?post.contents[0].contents:''
-
-    .control-group
-      label(for='postLanguage2') Language2
-      .controls
-        input#postLanguage2(name='post[contents][1][language]', placeholder='Language', value=post&&post.contents[1]?post.contents[1].language:'')
-    .control-group
-      label(for='postTitle2') Title2
-      .controls
-        input#postTitle2(name='post[contents][1][title]', placeholder='Title', value=post&&post.contents[1]?post.contents[1].title:'')
-    .control-group
-      label(for='postContents') Contents2
-      .controls
-        textarea#postContents(name='post[contents][1][contents]', placeholder='Contents')=post&&post.contents[1]?post.contents[1].contents:''
-
-    .control-group
-      label(for='postLanguage3') Language3
-      .controls
-        input#postLanguage3(name='post[contents][2][language]', placeholder='Language', value=post&&post.contents[2]?post.contents[2].language:'')
-    .control-group
-      label(for='postTitle3') Title3
-      .controls
-        input#postTitle3(name='post[contents][2][title]', placeholder='Title', value=post&&post.contents[2]?post.contents[2].title:'')
-    .control-group
-      label(for='postContents') Contents3
-      .controls
-        textarea#postContents(name='post[contents][2][contents]', placeholder='Contents')=post&&post.contents[2]?post.contents[2].contents:''
-        
     .control-group
       label(for='postTags') Tags
       .controls
@@ -87,9 +46,28 @@ block content
           input#postList(type='checkbox', name='post[list]', value=1, checked)
         - else
           input#postList(type='checkbox', name='post[list]', value=1)
+    - var languages = ['zht', 'zhs', 'en']
+    #tabscontainer.clearfix
+      ul.tabs
+        each lang in languages
+          li
+            a(href="#" + lang)= lang
+      .tab_container
+        each lang in languages
+          div(id=lang).tab_content
+            .control-group
+              label(for='postTitle') Title
+              .controls
+                input#postTitle(name='post[contents][' + lang + '][title]', placeholder='Title', value=post&&post.contents[lang]?post.contents[lang].title:'')
+            .control-group
+              label(for='postContents') Contents
+              .controls
+                textarea#postContents(name='post[contents][' + lang + '][contents]', placeholder='Contents')=post&&post.contents[lang]?post.contents[lang].contents:''
     .control-group
       .controls
         input(type='submit', value='Save').button
+        - if (post)
+          a(href='/' + post.id) View post
 
 block scripts
   script

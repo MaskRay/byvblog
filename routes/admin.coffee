@@ -52,6 +52,15 @@ module.exports = (app) ->
     Post.findOne {id: postId}, cont(err, post)
     return next err if err
     return next new Error('Invalid post id') if not post?
+
+    #Organize by languages
+    post = post.toObject()
+    post.contents ?= []
+    languages = {}
+    for contents in post.contents
+      languages[contents.language] = contents
+    post.contents = languages
+    
     res.render 'admin/editpost',
       post: post
   
@@ -69,4 +78,3 @@ module.exports = (app) ->
       req.session.error = err.toString()
       res.render 'admin/editpost',
         post: post
-      
