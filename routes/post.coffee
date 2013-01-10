@@ -90,7 +90,6 @@ exports.archive = (req, res, next) ->
     postTime:
       $gte: start
       $lt: end
-  console.log cond
   Post.getPosts cond, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts

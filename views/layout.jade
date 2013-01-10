@@ -94,7 +94,7 @@ html
               ul
                 each post in popularPosts
                   li
-                    a(href='/' + langLink(post.id))= postTitle(post)
+                    a(href=langLink('/' + post.id))= postTitle(post)
                     = ' - '
                     = post.clicks
             .sidebarBox

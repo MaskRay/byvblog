@@ -179,7 +179,7 @@ Post::render = (language, next) ->
       if content
         translate.zhtToZhs content.title, obtain(post.title)
         translate.zhtToZhs content.contents, obtain(post.contents)
-        post.contents = marked content.contents
+        post.contents = marked post.contents
         post.converted = 'opencc'
         rendered = true
     else if language is 'zht'
@@ -187,7 +187,7 @@ Post::render = (language, next) ->
       if content
         translate.zhsToZht content.title, obtain(post.title)
         translate.zhsToZht content.contents, obtain(post.contents)
-        post.contents = marked content.contents
+        post.contents = marked post.contents
         post.converted = 'opencc'
         rendered = true
   
