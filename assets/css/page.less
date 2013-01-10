@@ -88,7 +88,14 @@
 .entry-body {
   float: left;
   margin: 10px 0 0 0;
-  width: 555px;
+  width: @article-width;
+  color: @article-font-color;
+  a {
+    color: @link-color;
+    &:hover {
+      color: @link-color-hover;
+    }
+  }
 }
 .page-body {
   width: 100%;
@@ -114,19 +121,22 @@
   float: left;
   margin: 10px 20px 0 0;
   text-align: center;
-  width: 125px;
-  font-size: 12px;
+  width: @article-meta-width;
+  font-size: @article-meta-font-size;
   line-height: 20px;
-}
-.entry-meta ul {
-  margin: 0
-}
-.entry-meta li {
-  list-style: none;
-  margin: 0;
-}
-.entry-meta .title {
-  font-weight: bold
+  ul {
+    margin: 0;
+    li {
+      list-style: none;
+      margin: 0;
+      ul {
+        margin-left: 0;
+      }
+    }
+  }
+  .title {
+    font-weight: bold;
+  }
 }
 .post-format {
   background-color: #ddd;

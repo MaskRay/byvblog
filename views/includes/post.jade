@@ -8,12 +8,15 @@ mixin post(post)
           span.post-year #{post.postTime.getFullYear()}
         ul
           li
-            span.title Posted By:
+            span.title Author:
               author #{post.author}
           li
             span.title Reads: #{post.clicks}
           li
-            span.title Tags: #{post.tags}
+            ul
+              each tag in post.tags
+                li
+                  a(href='/blog/tag/' + tag) #{tag}
     .entry-body
       header
         h1
