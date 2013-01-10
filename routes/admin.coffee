@@ -47,8 +47,8 @@ exports.newPost = (req, res, next) ->
 exports.editPostPage = (req, res, next) ->
   if not req.session.user?
     return res.redirect '/admin/login'
-  postId = req.params[0]
-  Post.findOne {id: postId}, cont(err, post)
+  postGuid = req.params[0]
+  Post.findOne {guid: postGuid}, cont(err, post)
   return next err if err
   return next new Error('Invalid post id') if not post?
 
@@ -66,13 +66,13 @@ exports.editPostPage = (req, res, next) ->
 exports.editPost = (req, res, next) ->
   if not req.session.user?
     return res.redirect '/admin/login'
-  postId = req.params[0]
+  postGuid = req.params[0]
   try
-    Post.findOne {id: postId}, obtain(post)
+    Post.findOne {guid: postGuid}, obtain(post)
     throw new Error('Invalid post id') if not post?
     post.modify req.body.post, obtain(savedPost)
     req.session.success = 'Post saved'
-    res.redirect '/admin/edit/' + savedPost.id
+    res.redirect '/admin/edit/' + savedPost.guid
   catch err
     req.session.error = err.toString()
     res.render 'admin/editpost',

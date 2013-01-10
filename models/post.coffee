@@ -1,6 +1,7 @@
 'use continuation'
 mongoose = require '../lib/mongoose'
 translate = require '../lib/translate'
+utils = require '../lib/utils'
 marked = require 'marked'
 
 contentSchema = new mongoose.Schema
@@ -9,6 +10,10 @@ contentSchema = new mongoose.Schema
   language: String
 
 postSchema = new mongoose.Schema
+  guid:
+    type: String
+    index: true
+    unique: true
   id:
     type: String
     index: true
@@ -37,6 +42,8 @@ module.exports = Post = mongoose.model 'Post', postSchema
 postSchema.pre 'save', (next) ->
   if not @postTime?
     @postTime = new Date
+  if not @guid?
+    @guid = utils.md5(@postTime.toString()).substr(0, 10)
   if not @clicks?
     @clicks = 0
   if not @private?
