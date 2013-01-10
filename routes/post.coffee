@@ -54,11 +54,44 @@ exports.displayTag = (req, res, next) ->
   tagName = req.params[2]
   page = parseInt req.params[4]
   page = 1 if isNaN(page)
-  
   if language? and not (language in config.languages)
     return next()
   
   Post.getPosts {private:false, list:true, tags:tagName}, page, config.options.postsPerPage, obtain posts
+  Post.render posts, language, obtain(posts)
+  Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  Post.getArchive obtain archives
+  
+  res.render 'postslist',
+    posts: posts
+    popularPosts: popularPosts
+    archives: archives
+    page: page
+
+exports.archive = (req, res, next) ->
+  language = req.params[1]
+  year = parseInt req.params[2]
+  month = parseInt req.params[3]
+  page = parseInt req.params[5]
+  page = 1 if isNaN(page)
+  if language? and not (language in config.languages)
+    return next()
+  
+  start = new Date(year, month - 1, 1)
+  month++
+  if month > 12
+    year++
+    month = 1
+  end = new Date(year, month - 1, 1)
+  
+  cond =
+    private: false
+    list: true
+    postTime:
+      $gte: start
+      $lt: end
+  console.log cond
+  Post.getPosts cond, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
   Post.getArchive obtain archives

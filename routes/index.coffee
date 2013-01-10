@@ -13,6 +13,9 @@ routes = [
     path: /^\/((.{2,3})\/|)blog\/tag\/(.+?)(\/page\/(\d{1,4})|)$/
     GET: post.displayTag
   }, {
+    path: /^\/((.{2,3})\/|)blog\/archive\/(\d{4})\/(\d{1,2})(\/page\/(\d{1,4})|)$/
+    GET: post.archive
+  }, {
     path: /^\/admin$/
     GET: admin.index
   }, {
