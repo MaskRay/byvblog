@@ -31,7 +31,7 @@ html
         header#header.clearfix(role="banner")
           hgroup#logo-wrapper
             h1
-              a#logo(href='/', id='index_link')
+              a#logo(href=langLink('/'), id='index_link')
                 img(src="/images/logo.png")
               
           #navigation-wrapper.clearfix
@@ -94,7 +94,7 @@ html
               ul
                 each post in popularPosts
                   li
-                    a(href=post.id)= post.contents[0].title
+                    a(href='/' + langLink(post.id))= postTitle(post)
                     = ' - '
                     = post.clicks
             .sidebarBox

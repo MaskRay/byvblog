@@ -6,6 +6,7 @@ express = require 'express'
 connect_mongo = require 'connect-mongo'
 config = require './config'
 routes = require './routes'
+helper = require './middlewares/helper'
 
 app = express()
 
@@ -25,30 +26,7 @@ app.configure ->
   app.use require('connect-assets')
     src: path.join __dirname, 'assets'
     buildDir: 'public'
-  
-  app.use (req, res, next) ->
-    res.locals.dateFormat = require('dateformat');
-    res.locals.inspect = util.inspect
-    
-    pathSec = req._parsedUrl.pathname.split '/'
-    if pathSec[1] in config.languages
-      pathStart = 2
-      res.locals.language = pathSec[1]
-    else
-      pathStart = 1
-      res.locals.language = null
-    res.locals.postId = '/' + pathSec.slice(pathStart).join '/'
-    
-    res.locals.success = ->
-      success = req.session.success
-      req.session.success = undefined
-      success
-    res.locals.errors = ->
-      error = req.session.error
-      req.session.error = undefined
-      error
-    next()
-  
+  app.use helper
   app.use app.router
   app.use express.static(path.join __dirname, 'public')
 
