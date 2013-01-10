@@ -16,7 +16,9 @@ postSchema = new mongoose.Schema
   contents: [contentSchema]
   contentsFormat: String
   author: String
-  postTime: Date
+  postTime:
+    type: Date
+    index: true
   clicks:
     type: Number
     index: true
@@ -52,6 +54,61 @@ Post.getPosts = (conditions, page, pageSize, next) ->
 
 Post.getPopularPosts = (count, next) ->
   Post.find({private:false, list:true}).limit(count).sort('-clicks').exec next
+
+Post.getArchive = (next) ->
+  now = new Date
+  cond = {private:false, list:true}
+  #Get the oldest post
+  Post.find(cond).limit(1).sort('postTime').exec obtain(oldest)
+  if oldest.length is 0
+    oldest = now
+  else
+    oldest = oldest[0].postTime
+  
+  #Generate all months bewteen oldest day until now
+  months = []
+  if now.getFullYear() is oldest.getFullYear()
+    year = now.getFullYear()
+    month = oldest.getMonth()
+    while month <= now.getMonth()
+      months.push new Date(year, month, 1)
+      month++
+  else
+    year = oldest.getFullYear()
+    month = oldest.getMonth()
+    while month < 12
+      months.push new Date(year, month, 1)
+      month++
+    year++
+    while year < now.getFullYear()
+      month = 0
+      while month < 12
+        months.push new Date(year, month, 1)
+        month++
+      year++
+    month = 0
+    while month <= now.getMonth()
+      months.push new Date(year, month, 1)
+      month++
+  
+  #Get post count of each month
+  archives = []
+  for i, start of months
+    i = parseInt(i)
+    end = months[i + 1]
+    cond =
+      private:false
+      list:true
+      postTime:
+        $gte: start
+    if end?
+      cond.postTime.$lt = end
+    Post.count cond, obtain(count)
+    if count > 0
+      archives.push
+        month: start
+        count: count
+  next null, archives
 
 parseTags = (tags) ->
   return [] if not tags

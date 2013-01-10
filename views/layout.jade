@@ -100,10 +100,10 @@ html
             .sidebarBox
               h4 Archives
               ul
-                li
-                  a(href='/blog/archive/2012/09/') September 2012
-                li
-                  a(href='/blog/archive/2012/07/') July 2012
+                each archive in archives
+                  li
+                    a(href=langLink('/blog/archive/' + archive.month.getFullYear() + '/' + (archive.month.getMonth() + 1))) #{dateFormat(archive.month, 'mmmm yyyy')}
+                    = ' (' + archive.count + ')'
       footer#footer
         .container.clearfix
           .one-fourth.widget-container

@@ -13,10 +13,12 @@ exports.displayPostList = (req, res, next) ->
   Post.getPosts {private:false, list:true}, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  Post.getArchive obtain archives
   
   res.render 'postslist',
     posts: posts
     popularPosts: popularPosts
+    archives: archives
     page: page
 
 exports.displayPost = (req, res, next) ->
@@ -39,11 +41,13 @@ exports.displayPost = (req, res, next) ->
     post.save obtain()
   
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  Post.getArchive obtain archives
   
   post.render language, obtain(post)
   res.render 'post',
     post: post
     popularPosts: popularPosts
+    archives: archives
 
 exports.displayTag = (req, res, next) ->
   language = req.params[1]
@@ -57,8 +61,10 @@ exports.displayTag = (req, res, next) ->
   Post.getPosts {private:false, list:true, tags:tagName}, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  Post.getArchive obtain archives
   
   res.render 'postslist',
     posts: posts
     popularPosts: popularPosts
+    archives: archives
     page: page
