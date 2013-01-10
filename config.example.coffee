@@ -8,6 +8,8 @@ module.exports =
   site:
     url: 'http://www.byvoid.com/'
     author: 'BYVoid'
+    title: 'Beyond the Void'
+    description: '積羽沉舟 羣輕折軸'
   options:
     postsPerPage: 6
     feedPosts: 5

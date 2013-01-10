@@ -1,11 +1,12 @@
 post = require('./post')
+feed = require('./feed')
 admin = require('./admin')
 
 routes =
   '^\/((.{2,3})\/|)(page\/(\d{1,4})|)$':
     GET: post.displayPostList
   '^\/((.{2,3})\/|)feed$':
-    GET: post.displayFeed
+    GET: feed.feed
   '^\/((.{2,3})\/|)blog\/tag\/(.+?)(\/page\/(\d{1,4})|)$':
     GET: post.displayTag
   '^\/admin$':

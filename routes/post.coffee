@@ -1,5 +1,4 @@
 'use continuation'
-RSS = require 'rss'
 Post = require '../models/post'
 config = require '../config'
 
@@ -16,35 +15,6 @@ exports.displayPostList = (req, res, next) ->
   res.render 'postslist',
     posts: posts
     page: page
-
-exports.displayFeed = (req, res, next) ->
-  language = req.params[1]
-  
-  if language? and not (language in config.languages)
-    return next()
-  
-  Post.getPosts {private:false, list:true}, 1, config.options.feedPosts, obtain posts
-  Post.render posts, language, obtain(posts)
-  feed = new RSS({
-    title: 'byvblog'
-    description: 'desc'
-    feed_url: config.site.url + 'feed'
-    site_url: config.site.url
-    image_url: 'http://example.com/icon.png'
-    author: config.site.author
-  })
-  
-  for post in posts
-    feed.item
-      title: post.title
-      description: post.contents
-      url: config.site.url + post.id
-      guid: '111'
-      author: config.site.author
-      date: post.postTime
-  
-  xml = feed.xml()
-  res.end xml
 
 exports.displayPost = (req, res, next) ->
   language = req.params[1]
