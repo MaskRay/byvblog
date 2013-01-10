@@ -1,5 +1,6 @@
 extends layout
 include includes/post
+include includes/pagination
 
 block title
   title= '首䈎'
@@ -8,10 +9,10 @@ block banner-image
   img.intro-img(src="/images/banner-bg-3.jpg")
 
 block content
-  h1= 'Posts'
   #main.postlist(role="main")
     each post in posts
       mixin post(post)
+    mixin pagination("")
 
 block scripts
   script

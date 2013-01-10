@@ -5,30 +5,33 @@ admin = require './admin'
 config = require '../config'
 
 module.exports = (app) ->
-  app.get /^\/((.{2,3})\/|)$/, displayPostList
+  app.get /^\/((.{2,3})\/|)(page\/(\d{1,4})|)$/, displayPostList
   app.get /^\/((.{2,3})\/|)feed$/, displayFeed
-  app.get /^\/((.{2,3})\/|)blog\/tag\/(.+)$/, displayTag
+  app.get /^\/((.{2,3})\/|)blog\/tag\/(.+?)(\/page\/(\d{1,4})|)$/, displayTag
   admin app
   app.get /^\/((.{2,3})\/|)(.+)$/, displayPost
 
 displayPostList = (req, res, next) ->
   language = req.params[1]
+  page = parseInt req.params[3]
+  page = 1 if isNaN(page)
   
   if language? and not (language in config.languages)
     return next()
   
-  Post.find({private:false, list:true}).limit(config.options.postsPerPage).sort('-postTime').exec obtain posts
+  Post.getPosts {private:false, list:true}, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
   res.render 'postslist',
     posts: posts
+    page: page
 
 displayFeed = (req, res, next) ->
   language = req.params[1]
   
   if language? and not (language in config.languages)
     return next()
-
-  Post.find({private:false, list:true}).limit(config.options.feedPosts).sort('-postTime').exec obtain posts
+  
+  Post.getPosts {private:false, list:true}, 1, config.options.feedPosts, obtain posts
   Post.render posts, language, obtain(posts)
   feed = new RSS({
     title: 'byvblog'
@@ -78,12 +81,14 @@ displayPost = (req, res, next) ->
 displayTag = (req, res, next) ->
   language = req.params[1]
   tagName = req.params[2]
+  page = parseInt req.params[4]
+  page = 1 if isNaN(page)
   
   if language? and not (language in config.languages)
     return next()
-
-  Post.find({private:false, list:true, tags:tagName}).limit(10).sort('-postTime').exec obtain posts
   
+  Post.getPosts {private:false, list:true, tags:tagName}, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
   res.render 'postslist',
     posts: posts
+    page: page

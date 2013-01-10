@@ -45,6 +45,12 @@ postSchema.pre 'save', (next) ->
     @clicks = 0
   next()
 
+Post.getPosts = (conditions, page, pageSize, next) ->
+  page = 1 if page < 1
+  skip = (page - 1) * pageSize
+  Post.find(conditions).skip(skip).limit(pageSize).sort('-postTime').exec cont(err, posts)
+  next(err, posts)
+
 parseTags = (tags) ->
   return [] if not tags
   tags = tags.split ','

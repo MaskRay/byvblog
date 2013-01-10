@@ -1,0 +1,10 @@
+mixin pagination(prefix)
+  #pagination
+    - if (language)
+      - if (page > 1)
+        a(href= prefix + "/" + language + "/page/" + (page - 1)) Previous Page
+      a(href= prefix + "/" + language + "/page/" + (page + 1)) Next Page
+    - else
+      - if (page > 1)
+        a(href= prefix + "/page/" + (page - 1)) Previous Page
+      a(href= prefix + "/page/" + (page + 1)) Next Page
