@@ -2,30 +2,42 @@ post = require('./post')
 feed = require('./feed')
 admin = require('./admin')
 
-routes =
-  '^\/((.{2,3})\/|)(page\/(\d{1,4})|)$':
+routes = [
+  {
+    path: /^\/((.{2,3})\/|)(page\/(\d{1,4})|)$/
     GET: post.displayPostList
-  '^\/((.{2,3})\/|)feed$':
+  }, {
+    path: /^\/((.{2,3})\/|)feed$/
     GET: feed.feed
-  '^\/((.{2,3})\/|)blog\/tag\/(.+?)(\/page\/(\d{1,4})|)$':
+  }, {
+    path: /^\/((.{2,3})\/|)blog\/tag\/(.+?)(\/page\/(\d{1,4})|)$/
     GET: post.displayTag
-  '^\/admin$':
+  }, {
+    path: /^\/admin$/
     GET: admin.index
-  '^\/admin\/login$':
+  }, {
+    path: /^\/admin\/login$/
     GET: admin.loginPage
     POST: admin.login
-  '^\/admin\/logout$':
+  }, {
+    path: /^\/admin\/logout$/
     GET: admin.logout
-  '^\/admin\/new$':
+  }, {
+    path: /^\/admin\/new$/
     GET: admin.newPostPage
     POST: admin.newPost
-  '^\/admin\/edit\/(.+)$':
+  }, {
+    path: /^\/admin\/edit\/(.+)$/
     GET: admin.editPostPage
     POST: admin.editPost
-  '^\/((.{2,3})\/|)(.+)$':
+  }, {
+    path: /^\/((.{2,3})\/|)(.+)$/
     GET: post.displayPost
+  }
+]
 
 module.exports = (app) ->
-  for path, methods of routes
-    for method, handler of methods
-      app[method.toLowerCase()] new RegExp(path), handler
+  for route in routes
+    for method, handler of route
+      if method isnt 'path'
+        app[method.toLowerCase()] route.path, handler
