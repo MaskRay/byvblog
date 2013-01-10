@@ -105,7 +105,7 @@ Post.getArchive = (next) ->
       cond.postTime.$lt = end
     Post.count cond, obtain(count)
     if count > 0
-      archives.push
+      archives.unshift
         month: start
         count: count
   next null, archives
