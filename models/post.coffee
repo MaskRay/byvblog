@@ -48,8 +48,10 @@ postSchema.pre 'save', (next) ->
 Post.getPosts = (conditions, page, pageSize, next) ->
   page = 1 if page < 1
   skip = (page - 1) * pageSize
-  Post.find(conditions).skip(skip).limit(pageSize).sort('-postTime').exec cont(err, posts)
-  next(err, posts)
+  Post.find(conditions).skip(skip).limit(pageSize).sort('-postTime').exec next
+
+Post.getPopularPosts = (count, next) ->
+  Post.find({private:false, list:true}).limit(count).sort('-clicks').exec next
 
 parseTags = (tags) ->
   return [] if not tags

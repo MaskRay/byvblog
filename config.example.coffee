@@ -13,3 +13,4 @@ module.exports =
   options:
     postsPerPage: 6
     feedPosts: 5
+    popularPosts: 30

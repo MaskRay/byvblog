@@ -92,10 +92,11 @@ html
             .sidebarBox
               h4 Most popular
               ul
-                li
-                  a(href='/blog/post1') 日誌1
-                li
-                  a(href='/blog/post2') 日誌2
+                each post in popularPosts
+                  li
+                    a(href=post.id)= post.contents[0].title
+                    = ' - '
+                    = post.clicks
             .sidebarBox
               h4 Archives
               ul

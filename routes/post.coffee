@@ -12,14 +12,16 @@ exports.displayPostList = (req, res, next) ->
   
   Post.getPosts {private:false, list:true}, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
+  Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  
   res.render 'postslist',
     posts: posts
+    popularPosts: popularPosts
     page: page
 
 exports.displayPost = (req, res, next) ->
   language = req.params[1]
   postId = req.params[2]
-  
   if language? and not (language in config.languages)
     return next()
   
@@ -36,9 +38,12 @@ exports.displayPost = (req, res, next) ->
     post.clicks += 1
     post.save obtain()
   
+  Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  
   post.render language, obtain(post)
   res.render 'post',
     post: post
+    popularPosts: popularPosts
 
 exports.displayTag = (req, res, next) ->
   language = req.params[1]
@@ -51,6 +56,9 @@ exports.displayTag = (req, res, next) ->
   
   Post.getPosts {private:false, list:true, tags:tagName}, page, config.options.postsPerPage, obtain posts
   Post.render posts, language, obtain(posts)
+  Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  
   res.render 'postslist',
     posts: posts
+    popularPosts: popularPosts
     page: page
