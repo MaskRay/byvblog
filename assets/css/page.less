@@ -196,29 +196,15 @@
   width: 615px;
 }
 
-.hentry blockquote {
-  background: #f8f8f8 url(../images/quote.png) no-repeat 17px 21px;
-  font: italic 15px/1.6  "Georgia", Times, 'Times New Roman', serif;
-  padding: 20px 20px 20px 55px;
+blockquote {
+  background: #f8f8f8;
+  font-family: @monospace;
+  padding: 5px 20px 5px 20px;
   border-bottom: 1pt solid #e1e1e1;
   margin: 0px 0 20px 0;
-  float: left;
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
-}
-
-
-blockquote.alignleft {
-  float: left;
-  margin: 10px 10px 10px 0;
-  width: 300px;
-}
-
-blockquote.alignright {
-  float: right;
-  margin: 10px 0 10px 10px;
-  width: 300px;
 }
 
 .mediaitem {
@@ -418,18 +404,7 @@ q:after {
   content: '';
   content: none;
 }
-blockquote {
-  padding: 0px 10px 0px 35px;
-  line-height: 24px;
-  background-image: url(../images/quote.png);
-  background-position: 0% 10% ;
-  background-repeat: no-repeat;
-  color: #999999;
-}
 
-blockquote span {
-  color: #666666
-}
 .button-holder-2 {
   float: right;
   margin-top: 5px;
@@ -509,25 +484,22 @@ ul.buttons-huge li {
   margin-bottom: 0;
 }
 
-.table {
+table {
   width: 100%;
   margin-bottom: 20px;
   border: solid 1px #DDD;
   border-collapse: separate;
   border-spacing: 0;
   color: #555;
-}
-
-.table th, td {
-  border: 1px solid #EEE;
-  padding: 4px;
-  text-align: left;
-}
-
-.table tr:hover td {
-  background: #F3F3F3;
-}
-
-.table tr:nth-child(odd) {
-  background: #FAFAFA;
+  th, td {
+    border: 1px solid #EEE;
+    padding: 4px;
+    text-align: left;
+  }
+  tr:hover td {
+    background: #F3F3F3;
+  }
+  tr:nth-child(odd) {
+    background: #FAFAFA;
+  }
 }
