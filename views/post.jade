@@ -3,6 +3,8 @@ include includes/post
 
 block title
   title= post.title + ' - BYVoid'
+  - if (!language)
+    != css(post.language)
 
 block content
   mixin post(post)
@@ -10,7 +12,7 @@ block content
 
 block scripts
   script(type='text/javascript')
-    var disqus_shortname = 'byvoid';
+    var disqus_shortname = 'byvoidtest';
     var disqus_identifier = '#{post.guid}';
     var disqus_url = location.protocol + '//' + location.host + '/' + '#{post.id}';
     var disqus_developer = 1;
