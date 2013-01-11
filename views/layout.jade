@@ -3,6 +3,10 @@ html
   head
     block title
     != css('style')
+    - if (language)
+      != css(language)
+    - else if (post)
+      != css(post.language)
     link(rel="alternate", type="application/rss+xml", title="RSS Feed", href="/feed")
   body
     #page

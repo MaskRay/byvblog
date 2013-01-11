@@ -172,8 +172,10 @@ Post::render = (language, next) ->
 
   if language
     content = self.getContentsByLanguage language
+    post.language = language
   else
     content = self.contents[0]
+    post.language = self.contents[0].language
 
   if content
     post.title = content.title

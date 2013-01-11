@@ -34,7 +34,7 @@ routes = [
     GET: admin.editPostPage
     POST: admin.editPost
   }, {
-    path: /^\/((.{2,3})\/|)(.+)$/
+    path: /^\/((.{2,3})\/|)(.+?)(\/|)$/
     GET: post.displayPost
   }
 ]
