@@ -39,5 +39,5 @@ mixin sidebar()
       ul
         each archive in archives
           li
-            a(href=langLink('/blog/archive/' + archive.month.getFullYear() + '/' + (archive.month.getMonth() + 1))) #{dateFormat(archive.month, 'mmmm yyyy')}
+            a(href=langLink('/blog/archive/' + archive.month.getFullYear() + '/' + (archive.month.getMonth() + 1))) #{monthYearText(archive.month)}
             = ' (' + archive.count + ')'

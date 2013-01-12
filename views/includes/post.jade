@@ -3,7 +3,7 @@ mixin post(post)
     - if (post.list)
       .entry-meta
         time.post-date(datetime=post.postTime.toISOString())
-          span.post-month #{dateFormat(post.postTime, 'mmmm')}
+          span.post-month #{monthText(post.postTime)}
           strong.post-day #{post.postTime.getDate()}
           span.post-year #{post.postTime.getFullYear()}
         ul

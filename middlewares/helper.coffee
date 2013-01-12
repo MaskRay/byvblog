@@ -2,9 +2,12 @@ util = require 'util'
 config = require '../config'
 zhsMsg = require '../locale/zhs'
 zhtMsg = require '../locale/zht'
+dateFormat = require('dateformat')
+
+monthText = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
 
 module.exports = (req, res, next) ->
-  res.locals.dateFormat = require('dateformat');
+  res.locals.dateFormat = dateFormat
   res.locals.inspect = util.inspect
     
   pathSec = req._parsedUrl.pathname.split '/'
@@ -44,5 +47,19 @@ module.exports = (req, res, next) ->
     if not label?
       label = text
     label
+  
+  res.locals.monthText = (date) ->
+    if language is 'en'
+      text = dateFormat(date, 'mmmm')
+    else
+      text = monthText[date.getMonth()]
+    text
+  
+  res.locals.monthYearText = (date) ->
+    if language is 'en'
+      text = dateFormat(date, 'mmmm yyyy')
+    else
+      text = date.getFullYear() + '年' + monthText[date.getMonth()]
+    text
   
   next()
