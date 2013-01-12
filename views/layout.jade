@@ -1,3 +1,6 @@
+include includes/header
+include includes/side
+include includes/footer
 doctype 5
 html
   head
@@ -9,138 +12,16 @@ html
   body
     #page
       #page-top.container.clearfix
-        #pre-header
-          #social-icons
-            ul#social-links
-              li.facebook-link
-                a#social-01.facebook(href="http://www.facebook.com/byvoid", target="_blank", original-title="Find me on Facebook")
-              li.twitter-link
-                a#social-02.twitter(href="http://twitter.com/byvoid", target="_blank", original-title="Find me on Twitter")
-              li.google-link
-                a#social-03.google(href="http://plus.google.com/112163558251413006250", target="_blank", original-title="Find me on Google +")
-              li.linkedin-link
-                a#social-04.linkedin(href="http://www.linkedin.com/in/byvoid", target="_blank", original-title="My resume on LinkedIn")
-              li.github-link
-                a#social-05.github(href="http://github.com/BYVoid", target="_blank", original-title="My projects on Github")
-              li.renren-link
-                a#social-06.renren(href="http://www.renren.com/byvoid", target="_blank", original-title="人人網")
-              li.weibo-link
-                a#social-07.weibo(href="http://weibo.com/byvoid", target="_blank", original-title="新浪微博")
-              li.douban-link
-                a#social-08.douban(href="http://www.douban.com/people/byvoid/", target="_blank", original-title="豆瓣")
-              li.rss-link
-                a#social-09.rss(href="/feed", target="_blank", original-title="RSS feed")
-        header#header.clearfix(role="banner")
-          hgroup#logo-wrapper
-            h1
-              a#logo(href=langLink('/'), id='index_link')
-                img(src="/images/logo.png")
-              
-          #navigation-wrapper.clearfix
-            nav#main-navigation.main-menu
-              ul#menu-top-menu.sf-menu
-                li.menu-item.current
-                  a(href="/")='Blog'
-                li.menu-item
-                  a(href="/project")='Projects'
-                    span.downarrowclass
-                    span.downarrowclass
-                  ul.sub-menu
-                    li.menu-item
-                      a(href="/project/accounts9")="Accounts9"
-                    li.menu-item
-                      a(href="/project/cloud-icon-fighter")="Cloud Icon Fighter"
-                    li.menu-item
-                      a(href="/project/cogs")="C. Online Grading System"
-                li.menu-item
-                  a(href="/about")='About'
-                li.menu-item
-                  a(href="/contact")='Contact'
-
+        mixin preheader()
+        mixin header()
       #content.container.clearfix
         .container.clearfix
           block banner-image
             img.intro-img(src="/images/banner-bg-0.jpg")
-        .three-fourth
+        #content-main.three-fourth
           block content
-        .one-fourth.last
-          aside
-            .sidebarBox.widget_search
-              form#searchform(role='search', method='get', action='https://www.google.com/cse', target='_blank')
-                label.screen-reader-text(for='s') Search for:
-                input#s(type='text', value='', name='q', placeholder='Search this site...')
-                input(type='hidden', name='cx', value='partner-pub-7100557222552278:h6n6am-u2fu')
-                input(type='hidden', name='ie', value='UTF-8')
-                input(name='siteurl', type='hidden', value='www.byvoid.com')
-                input#searchsubmit(type='submit', value='Search')
-            .sidebarBox
-              h4 Language
-              ul
-                li
-                  a(href=postId) 原文
-                li
-                  a(href='/zht' + postId) 正體中文
-                li
-                  a(href='/zhs' + postId) 簡體中文
-                li
-                  a(href='/en' + postId) English
-            .sidebarBox
-              h4 Categories
-              ul
-                li
-                  a(href='/blog/tag/語言學') 語言學
-                li
-                  a(href='/blog/tag/計算機科學') 計算機科學
-            .sidebarBox
-              h4 Most popular
-              ul
-                each post in popularPosts
-                  li
-                    a(href=langLink('/' + post.id))= postTitle(post)
-                    = ' - '
-                    = post.clicks
-            .sidebarBox
-              h4 Archives
-              ul
-                each archive in archives
-                  li
-                    a(href=langLink('/blog/archive/' + archive.month.getFullYear() + '/' + (archive.month.getMonth() + 1))) #{dateFormat(archive.month, 'mmmm yyyy')}
-                    = ' (' + archive.count + ')'
-      footer#footer
-        .container.clearfix
-          .one-fourth.widget-container
-            h1 Recent Posts
-            ul
-              li
-                a(href='') In egestas porta tortor sed imperdiet
-              li
-                a(href='') Nulla hendrerit vestibulum adipiscing
-              li
-                a(href='') Donec fermentum odio et turpis
-              li
-                a(href='') Sed rhoncus mollis porta
-              li
-                a(href='') Vivamus id ante neque
-          .one-fourth.widget-container
-            h1 Blogroll
-            ul
-              li
-                a(href='http://aifreedom.com/', target="_blank") AIFreedom
-              li
-                a(href='http://www.mengyalan.com/', target="_blank") Lan.d'sCape
-              li
-                a(href='http://maskray.me/', target="_blank") MaskRay
-              li
-                a(href='http://www.liuhanyu.com/', target="_blank") 不安靜的書桌
-              li
-                a(href='http://solog.me/', target="_blank") 獨異誌
-          .one-fourth.widget-container
-            h1 Something
-        #copyrights
-          .container.clearfix
-            span.right
-              a.backtotop(href='#') ↑
-            ='Originally designed by Site5 WordPress Themes. BYVoid modified.'
-
+        #content-side.one-fourth.last
+          mixin sidebar()
+      mixin footer()
     != js('script')
     block scripts
