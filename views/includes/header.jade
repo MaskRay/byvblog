@@ -7,23 +7,18 @@ mixin header()
     #navigation-wrapper.clearfix
       nav#main-navigation.main-menu
         ul#menu-top-menu.sf-menu
-          li.menu-item.current
-            a(href="/")='Blog'
-          li.menu-item
-            a(href="/project")='Projects'
-              span.downarrowclass
-              span.downarrowclass
-            ul.sub-menu
-              li.menu-item
-                a(href="/project/accounts9")="Accounts9"
-              li.menu-item
-                a(href="/project/cloud-icon-fighter")="Cloud Icon Fighter"
-              li.menu-item
-                a(href="/project/cogs")="C. Online Grading System"
-          li.menu-item
-            a(href="/about")='About'
-          li.menu-item
-            a(href="/contact")='Contact'
+          each link in config.navigator
+            li.menu-item(class=(postId === link.link)?"current":"")
+              - if (!link.submenu)
+                a(href=langLink(link.link))= link.name
+              - else
+                a(href=langLink(link.link))= link.name
+                  span.downarrowclass
+                  span.downarrowclass
+                ul.sub-menu
+                  each sublink in link.submenu
+                    li.menu-item
+                      a(href=langLink(sublink.link))= sublink.name
 
 mixin preheader()
   #pre-header

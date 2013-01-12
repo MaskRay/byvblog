@@ -39,3 +39,23 @@ module.exports =
     name: '獨異誌'
     link: 'http://solog.me/'
   }]
+  navigator: [{
+    name: 'Blog'
+    link: '/'
+  }, {
+    name: 'Projects'
+    link: '/projects'
+    submenu: [{
+      name: 'Accounts9'
+      link: '/projects/accounts9'
+    }, {
+      name: 'COGS'
+      link: '/projects/COGS'
+    }]
+  }, {
+    name: 'About'
+    link: '/about'
+  }, {
+    name: 'Contact'
+    link: '/contact'
+  }]
