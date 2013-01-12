@@ -14,6 +14,7 @@ module.exports =
     postsPerPage: 6
     feedPosts: 5
     popularPosts: 30
+    recentPosts: 5
   social:
     facebook: 'http://www.facebook.com/byvoid'
     twitter: "http://twitter.com/byvoid"
