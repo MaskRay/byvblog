@@ -108,3 +108,19 @@ exports.archive = (req, res, next) ->
     archives: archives
     recentPosts: recentPosts
     page: page
+
+exports.tagList = (req, res, next) ->
+  language = req.params[1]
+  if language? and not (language in config.languages)
+    return next()
+  
+  Post.getTags obtain tags
+  Post.getPopularPosts config.options.popularPosts, obtain popularPosts
+  Post.getArchive obtain archives
+  Post.getRecentPosts config.options.recentPosts, obtain recentPosts
+  
+  res.render 'taglist',
+    tags: tags
+    popularPosts: popularPosts
+    archives: archives
+    recentPosts: recentPosts

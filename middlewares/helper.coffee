@@ -9,17 +9,27 @@ monthText = ['一月', '二月', '三月', '四月', '五月', '六月', '七月
 module.exports = (req, res, next) ->
   res.locals.dateFormat = dateFormat
   res.locals.inspect = util.inspect
+  res.locals.session = req.session
 
   pathSec = req._parsedUrl.pathname.split '/'
+  #Remove language
   if pathSec[1] in config.languages
     pathStart = 2
     language = pathSec[1]
   else
     pathStart = 1
     language = null
+  pathSec = pathSec.slice(pathStart)
+  #Remove page
+  if pathSec.length >= 2 and pathSec[pathSec.length - 2] is 'page'
+    pathSec = pathSec.slice(0, pathSec.length - 2)
+  postId = '/' + pathSec.join '/'
+  #Remove '/' in the tail
+  if postId[postId.length - 1] is '/'
+    postId = postId.substr(0, postId.length - 1)
+  res.locals.postId = postId
   res.locals.language = language
   res.locals.postId = '/' + pathSec.slice(pathStart).join '/'
-
   res.locals.success = ->
     success = req.session.success
     req.session.success = undefined

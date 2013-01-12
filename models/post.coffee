@@ -120,6 +120,20 @@ Post.getArchive = (next) ->
         count: count
   next null, archives
 
+Post.getTags = (next) ->
+  Post.find {private:false}, obtain(posts)
+  tags = {}
+  for post in posts
+    for tag in post.tags
+      tags[tag] ?= 0
+      tags[tag]++
+  result = []
+  for tag in Object.keys(tags)
+    result.push
+      tag: tag
+      count: tags[tag]
+  next null, result
+
 parseTags = (tags) ->
   return [] if not tags
   tags = tags.split ','

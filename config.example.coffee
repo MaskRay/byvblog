@@ -14,6 +14,20 @@ module.exports =
     postsPerPage: 6
     feedPosts: 5
     popularPosts: 30
+    recentPosts: 5
+  categories: [
+    '中文與漢語',
+    '生活點滴',
+    '稷下學宮',
+    '精華轉載',
+    '自娛自樂',
+    '設計開發',
+    '點滴發現',
+    '計算機科學',
+    '競賽題解',
+    '競賽歷程',
+    'JavaScript',
+  ]
   social:
     facebook: 'http://www.facebook.com/byvoid'
     twitter: "http://twitter.com/byvoid"
@@ -43,6 +57,9 @@ module.exports =
     name: 'Blog'
     link: '/'
   }, {
+    name: 'Tags'
+    link: '/blog/tag'
+  }, {
     name: 'Projects'
     link: '/projects'
     submenu: [{
@@ -62,3 +79,6 @@ module.exports =
   disqus:
     shortname: 'disqus'
     developer: 0
+  search:
+    google_cx: '010010093310975652071:4go1rz-booo'
+    domain: 'maskray.me'

@@ -1,0 +1,20 @@
+extends layout
+include includes/post
+include includes/pagination
+
+block title
+  title= label('Tags')
+
+block banner-image
+  img.intro-img(src="/images/banner-bg-4.jpg")
+
+block content
+  h1= label('Tags')
+  - var sizeFactor = 32, minSize = 14, countFactor = 4
+  each tag in tags
+    a(href=langLink('/blog/tag/' + tag.tag), style='font-size: ' + (Math.log(tag.count) / countFactor * (sizeFactor) + minSize) + 'px', title=tag.tag + '(' + tag.count + ')')= tag.tag
+    =' '
+
+block scripts
+  script
+    history.replaceState('taglist');

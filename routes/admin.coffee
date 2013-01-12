@@ -42,7 +42,7 @@ exports.newPost = (req, res, next) ->
     req.session.error = err.toString()
     return res.redirect '/admin/new'
   req.session.success = 'Post saved'
-  res.redirect '/admin/edit/' + post.id
+  res.redirect '/admin/edit/' + post.guid
 
 exports.editPostPage = (req, res, next) ->
   if not req.session.user?

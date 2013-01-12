@@ -8,6 +8,8 @@ block title
 
 block content
   mixin post(post)
+  - if (session.user)
+    a(href='/admin/edit/' + post.guid)= label('Edit post')
   #disqus_thread
 
 block scripts

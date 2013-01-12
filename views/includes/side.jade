@@ -4,29 +4,27 @@ mixin sidebar()
       form#searchform(role='search', method='get', action='https://www.google.com/cse', target='_blank')
         label.screen-reader-text(for='s') Search for:
         input#s(type='text', value='', name='q', placeholder='Search this site...')
-        input(type='hidden', name='cx', value='partner-pub-7100557222552278:h6n6am-u2fu')
+        input(type='hidden', name='cx', value=config.search.google_cx)
         input(type='hidden', name='ie', value='UTF-8')
-        input(name='siteurl', type='hidden', value='maskray.me')
+        input(name='siteurl', type='hidden', value=config.search.domain)
         input#searchsubmit(type='submit', value='Search')
     .sidebarBox
       h4= label('Language')
       ul
         li
-          a(href=postId) 原文
+          a(href=postId?postId:'/') 原文
         li
           a(href='/zht' + postId) 正體中文
         li
           a(href='/zhs' + postId) 簡體中文
         li
           a(href='/en' + postId) English
-    //
-      .sidebarBox
-        h4= label('Categories')
-        ul
+    .sidebarBox
+      h4= label('Categories')
+      ul
+        each category in config.categories
           li
-            a(href='/blog/tag/語言學') 語言學
-          li
-            a(href='/blog/tag/計算機科學') 計算機科學
+            a(href=langLink('/blog/tag/' + category))= category
     .sidebarBox
       h4= label('Most popular')
       ul
