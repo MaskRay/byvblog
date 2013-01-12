@@ -4,16 +4,9 @@ mixin footer()
       .one-fourth.widget-container
         h1 Recent Posts
         ul
-          li
-            a(href='') In egestas porta tortor sed imperdiet
-          li
-            a(href='') Nulla hendrerit vestibulum adipiscing
-          li
-            a(href='') Donec fermentum odio et turpis
-          li
-            a(href='') Sed rhoncus mollis porta
-          li
-            a(href='') Vivamus id ante neque
+          each post in recentPosts
+            li
+              a(href=langLink('/' + post.id))= postTitle(post)
       .one-fourth.widget-container
         h1 Blogroll
         ul
@@ -26,4 +19,4 @@ mixin footer()
       .container.clearfix
         span.right
           a.backtotop(href='#') ↑
-        ='Originally designed by Site5 WordPress Themes. BYVoid modified.'
+        ='Originally designed by Site5 WordPress Themes. BYVoid refactored with Node.js, less, jade and CoffeeScript.'

@@ -14,11 +14,13 @@ exports.displayPostList = (req, res, next) ->
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
   Post.getArchive obtain archives
+  Post.getRecentPosts config.options.recentPosts, obtain recentPosts
   
   res.render 'postslist',
     posts: posts
     popularPosts: popularPosts
     archives: archives
+    recentPosts: recentPosts
     page: page
 
 exports.displayPost = (req, res, next) ->
@@ -42,12 +44,14 @@ exports.displayPost = (req, res, next) ->
   
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
   Post.getArchive obtain archives
+  Post.getRecentPosts config.options.recentPosts, obtain recentPosts
   
   post.render language, obtain(post)
   res.render 'post',
     post: post
     popularPosts: popularPosts
     archives: archives
+    recentPosts: recentPosts
 
 exports.displayTag = (req, res, next) ->
   language = req.params[1]
@@ -61,11 +65,13 @@ exports.displayTag = (req, res, next) ->
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
   Post.getArchive obtain archives
+  Post.getRecentPosts config.options.recentPosts, obtain recentPosts
   
   res.render 'postslist',
     posts: posts
     popularPosts: popularPosts
     archives: archives
+    recentPosts: recentPosts
     page: page
 
 exports.archive = (req, res, next) ->
@@ -94,9 +100,11 @@ exports.archive = (req, res, next) ->
   Post.render posts, language, obtain(posts)
   Post.getPopularPosts config.options.popularPosts, obtain popularPosts
   Post.getArchive obtain archives
+  Post.getRecentPosts config.options.recentPosts, obtain recentPosts
   
   res.render 'postslist',
     posts: posts
     popularPosts: popularPosts
     archives: archives
+    recentPosts: recentPosts
     page: page

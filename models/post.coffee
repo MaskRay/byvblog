@@ -62,6 +62,9 @@ Post.getPosts = (conditions, page, pageSize, next) ->
 Post.getPopularPosts = (count, next) ->
   Post.find({private:false, list:true}).limit(count).sort('-clicks').exec next
 
+Post.getRecentPosts = (count, next) ->
+  Post.getPosts {private:false, list:true}, 1, 5, next
+
 Post.getArchive = (next) ->
   now = new Date
   cond = {private:false, list:true}
