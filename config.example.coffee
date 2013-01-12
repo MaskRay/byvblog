@@ -57,6 +57,9 @@ module.exports =
     name: 'Blog'
     link: '/'
   }, {
+    name: 'Tags'
+    link: '/blog/tag'
+  }, {
     name: 'Projects'
     link: '/projects'
     submenu: [{
