@@ -4,7 +4,7 @@ module.exports =
   'most popular': '最熱門'
   'archives': '存檔'
   'blog': '網誌'
-  'projects': '項目'
+  'portfolio': '項目'
   'about': '關於'
   'contact': '聯繫'
   'address': '地址'

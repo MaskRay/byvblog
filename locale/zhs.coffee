@@ -4,7 +4,7 @@ module.exports =
   'most popular': '最热门'
   'archives': '存档'
   'blog': '网志'
-  'projects': '项目'
+  'portfolio': '项目'
   'about': '关于'
   'contact': '联系'
   'address': '地址'

@@ -27,7 +27,7 @@ postSchema = new mongoose.Schema
   clicks:
     type: Number
     index: true
-  tags: 
+  tags:
     type: [String]
     index: true
   private:
@@ -43,7 +43,7 @@ postSchema.pre 'save', (next) ->
   if not @postTime?
     @postTime = new Date
   if not @guid?
-    @guid = utils.md5(@postTime.toString()).substr(0, 10)
+    @guid = utils.md5(Math.random()+@postTime.toString()).substr(0, 10)
   if not @clicks?
     @clicks = 0
   if not @private?
@@ -74,7 +74,7 @@ Post.getArchive = (next) ->
     oldest = now
   else
     oldest = oldest[0].postTime
-  
+
   #Generate all months bewteen oldest day until now
   months = []
   if now.getFullYear() is oldest.getFullYear()
@@ -100,7 +100,7 @@ Post.getArchive = (next) ->
     while month <= now.getMonth()
       months.push new Date(year, month, 1)
       month++
-  
+
   #Get post count of each month
   archives = []
   for i, start of months
@@ -202,7 +202,7 @@ Post::render = (language, next) ->
         post.contents = marked post.contents
         post.converted = 'opencc'
         rendered = true
-  
+
   if not rendered
     post.converted = 'translate'
     post.title = 'Not implemented'
