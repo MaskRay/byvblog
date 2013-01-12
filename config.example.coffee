@@ -15,6 +15,19 @@ module.exports =
     feedPosts: 5
     popularPosts: 30
     recentPosts: 5
+  categories: [
+    '中文與漢語',
+    '生活點滴',
+    '稷下學宮',
+    '精華轉載',
+    '自娛自樂',
+    '設計開發',
+    '點滴發現',
+    '計算機科學',
+    '競賽題解',
+    '競賽歷程',
+    'JavaScript',
+  ]
   social:
     facebook: 'http://www.facebook.com/byvoid'
     twitter: "http://twitter.com/byvoid"

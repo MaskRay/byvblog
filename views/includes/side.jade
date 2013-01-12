@@ -12,7 +12,7 @@ mixin sidebar()
       h4= label('Language')
       ul
         li
-          a(href=postId) 原文
+          a(href=postId?postId:'/') 原文
         li
           a(href='/zht' + postId) 正體中文
         li
@@ -22,10 +22,9 @@ mixin sidebar()
     .sidebarBox
       h4= label('Categories')
       ul
-        li
-          a(href='/blog/tag/語言學') 語言學
-        li
-          a(href='/blog/tag/計算機科學') 計算機科學
+        each category in config.categories
+          li
+            a(href=langLink('/blog/tag/' + category))= category
     .sidebarBox
       h4= label('Most popular')
       ul
