@@ -1,7 +1,7 @@
 mixin post(post)
   article.post.hentry.clearfix(data-post-id=post.id)
     - if (post.list)
-      .entry-meta
+      aside.entry-meta
         time.post-date(datetime=post.postTime.toISOString())
           span.post-month #{monthText(post.postTime)}
           strong.post-day #{post.postTime.getDate()}
@@ -17,7 +17,7 @@ mixin post(post)
               each tag in post.tags
                 li
                   a(href='/blog/tag/' + tag) #{tag}
-    .entry-body
+    section.entry-body(class=post.list?"entry-body-content":"")
       header
         h1
           a.post_header_link(href=langLink('/' + post.id), data-post-id=post.id)= post.title
