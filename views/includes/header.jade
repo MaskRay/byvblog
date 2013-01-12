@@ -10,9 +10,9 @@ mixin header()
           each link in config.navigator
             li.menu-item(class=(postId === link.link)?"current":"")
               - if (!link.submenu)
-                a(href=langLink(link.link))= link.name
+                a(href=langLink(link.link))= label(link.name)
               - else
-                a(href=langLink(link.link))= link.name
+                a(href=langLink(link.link))= label(link.name)
                   span.downarrowclass
                   span.downarrowclass
                 ul.sub-menu

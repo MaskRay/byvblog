@@ -11,17 +11,17 @@ block content
         input#postId(name='post[id]', placeholder='Id', value=post?post.id:'')
         p Permalink of this post
     .control-group
-      label(for='postTags') Tags
+      label(for='postTags')= label('Tags')
       .controls
         input#postTags(name='post[tags]', placeholder='Tags', value=post?post.tags:'')
         p Separate with comma
     .control-group
-      label(for='postClicks') Clicks
+      label(for='postClicks')= label('Clicks')
       .controls
         input#postClicks(name='post[clicks]', placeholder='Clicks', value=post?post.clicks:'0')
         p Number of views
     .control-group
-      label(for='postContentsFormat') Format
+      label(for='postContentsFormat')= label('Format')
       .controls
         select#postContentsFormat(name='post[contentsFormat]')
           - if (post && post.contentsFormat === 'markdown')
@@ -33,14 +33,14 @@ block content
           - else
             option(value='html') HTML
     .control-group
-      label(for='postPrivate') Private
+      label(for='postPrivate')= label('Private')
       .controls
         - if (post && post.private)
           input#postPrivate(type='checkbox', name='post[private]', value=1, checked)
         - else
           input#postPrivate(type='checkbox', name='post[private]', value=1)
     .control-group
-      label(for='postList') Show in list
+      label(for='postList')= label('Show in list')
       .controls
         - if (post && post.list)
           input#postList(type='checkbox', name='post[list]', value=1, checked)
@@ -56,18 +56,18 @@ block content
         each lang in languages
           div(id=lang).tab_content
             .control-group
-              label(for='postTitle') Title
+              label(for='postTitle')= label('Title')
               .controls
                 input#postTitle(name='post[contents][' + lang + '][title]', placeholder='Title', value=post&&post.contents[lang]?post.contents[lang].title:'')
             .control-group
-              label(for='postContents') Contents
+              label(for='postContents')= label('Contents')
               .controls
                 textarea#postContents(name='post[contents][' + lang + '][contents]', placeholder='Contents')=post&&post.contents[lang]?post.contents[lang].contents:''
     .control-group
       .controls
-        input(type='submit', value='Save').button
+        input(type='submit', value=label('Save')).button
         - if (post)
-          a(href='/' + post.id) View post
+          a(href='/' + post.id)= label('View post')
 
 block scripts
   script

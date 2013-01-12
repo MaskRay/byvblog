@@ -9,7 +9,7 @@ mixin sidebar()
         input(name='siteurl', type='hidden', value='www.byvoid.com')
         input#searchsubmit(type='submit', value='Search')
     .sidebarBox
-      h4 Language
+      h4= label('Language')
       ul
         li
           a(href=postId) 原文
@@ -20,14 +20,14 @@ mixin sidebar()
         li
           a(href='/en' + postId) English
     .sidebarBox
-      h4 Categories
+      h4= label('Categories')
       ul
         li
           a(href='/blog/tag/語言學') 語言學
         li
           a(href='/blog/tag/計算機科學') 計算機科學
     .sidebarBox
-      h4 Most popular
+      h4= label('Most popular')
       ul
         each post in popularPosts
           li
@@ -35,7 +35,7 @@ mixin sidebar()
             = ' - '
             = post.clicks
     .sidebarBox
-      h4 Archives
+      h4= label('Archives')
       ul
         each archive in archives
           li

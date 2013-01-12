@@ -1,5 +1,7 @@
 util = require 'util'
 config = require '../config'
+zhsMsg = require '../locale/zhs'
+zhtMsg = require '../locale/zht'
 
 module.exports = (req, res, next) ->
   res.locals.dateFormat = require('dateformat');
@@ -33,5 +35,14 @@ module.exports = (req, res, next) ->
       if content.language is language
         return content.title
     post.contents[0].title
+  
+  res.locals.label = (text) ->
+    if language is 'zht' or not language
+      label = zhtMsg[text.toLowerCase()]
+    else if language is 'zhs'
+      label = zhsMsg[text.toLowerCase()]
+    if not label?
+      label = text
+    label
   
   next()

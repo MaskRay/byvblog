@@ -16,11 +16,11 @@ html
             nav#main-navigation.main-menu
               ul#menu-top-menu.sf-menu
                 li.menu-item
-                  a(href="/admin") Posts
+                  a(href="/admin")= label('Posts')
                 li.menu-item
-                  a(href="/admin/new") New Post
+                  a(href="/admin/new")= label('New Post')
                 li.menu-item
-                  a(href="/admin/logout") Log out
+                  a(href="/admin/logout")= label('Log out')
       #content.container.clearfix
         .container.clearfix
           - var successMsgs = success()

@@ -8,10 +8,10 @@ mixin post(post)
           span.post-year #{post.postTime.getFullYear()}
         ul
           li
-            span.title Author:
+            span.title #{label('Author')}:
               author #{post.author}
           li
-            span.title Reads: #{post.clicks}
+            span.title #{label('Reads')}: #{post.clicks}
           li
             ul
               each tag in post.tags
