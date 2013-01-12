@@ -59,3 +59,6 @@ module.exports =
     name: 'Contact'
     link: '/contact'
   }]
+  disqus:
+    shortname: 'disqus'
+    developer: 0
