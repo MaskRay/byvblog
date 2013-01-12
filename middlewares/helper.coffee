@@ -9,7 +9,8 @@ monthText = ['一月', '二月', '三月', '四月', '五月', '六月', '七月
 module.exports = (req, res, next) ->
   res.locals.dateFormat = dateFormat
   res.locals.inspect = util.inspect
-    
+  res.locals.session = req.session
+  
   pathSec = req._parsedUrl.pathname.split '/'
   if pathSec[1] in config.languages
     pathStart = 2
