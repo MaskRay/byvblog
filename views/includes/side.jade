@@ -4,9 +4,9 @@ mixin sidebar()
       form#searchform(role='search', method='get', action='https://www.google.com/cse', target='_blank')
         label.screen-reader-text(for='s') Search for:
         input#s(type='text', value='', name='q', placeholder='Search this site...')
-        input(type='hidden', name='cx', value='partner-pub-7100557222552278:h6n6am-u2fu')
+        input(type='hidden', name='cx', value=config.search.google_cx)
         input(type='hidden', name='ie', value='UTF-8')
-        input(name='siteurl', type='hidden', value='www.byvoid.com')
+        input(name='siteurl', type='hidden', value=config.search.domain)
         input#searchsubmit(type='submit', value='Search')
     .sidebarBox
       h4= label('Language')

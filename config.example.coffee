@@ -63,3 +63,6 @@ module.exports =
   disqus:
     shortname: 'disqus'
     developer: 0
+  search:
+    google_cx: 'partner-pub-7100557222552278:h6n6am-u2fu'
+    domain: 'www.byvoid.com'
